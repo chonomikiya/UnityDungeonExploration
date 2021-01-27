@@ -7,10 +7,10 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: wall13
+  m_Name: wall14
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _NORMALMAP
-  m_LightmapFlags: 5
+  m_ShaderKeywords: _EMISSION _NORMALMAP
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 55975d3373363de4a939ad4d35c16e3e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 75224395da2d71248b90881fc6d56771, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Cube:
@@ -52,7 +52,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 6bea7c2499a438d43af030c98e376c46, type: 3}
+        m_Texture: {fileID: 2800000, guid: 36d2823b89b4177499bc120bd5d20c9e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -60,7 +60,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: 403dd147cb6f9eb4ca39f5308d188e2c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 38c4e4ecd19a6c6499e40aefab1e9749, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
@@ -74,15 +74,19 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EmissionScaleUI: 0
-    - _Glossiness: 0.249
-    - _Metallic: 0.112
+    - _GlossMapScale: 1
+    - _Glossiness: 0.17
+    - _GlossyReflections: 1
+    - _Metallic: 0.092
     - _Mode: 0
-    - _OcclusionStrength: 0.5
-    - _Parallax: 0.031
+    - _OcclusionStrength: 0.331
+    - _Parallax: 0.042388055
     - _RMS: 0.20974629
     - _ShadeRange: 0.02
     - _ShadingStrength: 0.14925373
     - _Shininess: 0.27831945
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _UseAlpha: 1

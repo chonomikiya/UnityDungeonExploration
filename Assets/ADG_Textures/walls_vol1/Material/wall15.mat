@@ -7,10 +7,10 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: wall11
+  m_Name: wall15
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _NORMALMAP
-  m_LightmapFlags: 5
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 302bab5312227ea459512a6f0ed99b67, type: 3}
+        m_Texture: {fileID: 2800000, guid: e6ee6a5b871248f4a87782fc52048879, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Cube:
@@ -52,7 +52,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: c11ee9c965544cf48968e3aee219553d, type: 3}
+        m_Texture: {fileID: 2800000, guid: b37399ebfc7c86545ae7e9fdd35aead8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -60,11 +60,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: b0d948dad3a9457429c143ec2f396e39, type: 3}
+        m_Texture: {fileID: 2800000, guid: e2f013fef687295409bd0093981e2495, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
-        m_Texture: {fileID: 2800000, guid: 2a92ec3b24546c447ae2a5f5da6f3db8, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -74,21 +74,25 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EmissionScaleUI: 0
+    - _GlossMapScale: 1
     - _Glossiness: 0.17
-    - _Metallic: 0.238
+    - _GlossyReflections: 1
+    - _Metallic: 0.092
     - _Mode: 0
-    - _OcclusionStrength: 0.4
+    - _OcclusionStrength: 0.5
     - _Parallax: 0.042388055
     - _RMS: 0.20974629
     - _ShadeRange: 0.02
     - _ShadingStrength: 0.14925373
     - _Shininess: 0.27831945
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _UseAlpha: 1
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.9338235, g: 0.9338235, b: 0.9338235, a: 1}
+    - _Color: {r: 0.9411765, g: 0.9411765, b: 0.9411765, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColorUI: {r: 1, g: 1, b: 1, a: 1}
     - _ReflectColor: {r: 1, g: 1, b: 1, a: 0.5}

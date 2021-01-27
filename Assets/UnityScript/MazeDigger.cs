@@ -152,20 +152,20 @@ namespace DungeonExploration.Maze{
                 return cell;
             }
 
-            // デバッグ用処理
-            public static void DebugPrint(int[,] maze)
-            {
-                Console.WriteLine($"Width: {maze.GetLength(0)}");
-                Console.WriteLine($"Height: {maze.GetLength(1)}");
-                for (int y = 0; y < maze.GetLength(1); y++)
-                {
-                    for (int x = 0; x < maze.GetLength(0); x++)
-                    {
-                        Console.Write(maze[x, y] == Wall ? "■ " : "　");
-                    }
-                    Console.WriteLine();
-                }
-            }
+            // // デバッグ用処理
+            // public static void DebugPrint(int[,] maze)
+            // {
+            //     Console.WriteLine($"Width: {maze.GetLength(0)}");
+            //     Console.WriteLine($"Height: {maze.GetLength(1)}");
+            //     for (int y = 0; y < maze.GetLength(1); y++)
+            //     {
+            //         for (int x = 0; x < maze.GetLength(0); x++)
+            //         {
+            //             Console.Write(maze[x, y] == Wall ? "■ " : "　");
+            //         }
+            //         Console.WriteLine();
+            //     }
+            // }
 
             // 通路・壁情報
             const int Path = 0;
