@@ -9,7 +9,7 @@ public class MazeGenerator : MonoBehaviour
     int [,] Maze;
     [SerializeField] int init0ffset = 10;
 
-    [SerializeField] GameObject CubePrefab = null;
+    [SerializeField] GameObject WallPrefab = null;
     [SerializeField] GameObject PathPrefab = null;
     // Start is called before the first frame update
     void Start()
@@ -42,7 +42,7 @@ public class MazeGenerator : MonoBehaviour
         for(int z=0;z<maze.GetLength(1);z++){
             for(int x=0;x<maze.GetLength(0);x++){
                 if(maze[x,z] == 1){
-                    GameObject Cube = Instantiate(CubePrefab,new Vector3(x*init0ffset,0,z*init0ffset),Quaternion.identity) as GameObject;
+                    GameObject Cube = Instantiate(WallPrefab,new Vector3(x*init0ffset,0,z*init0ffset),Quaternion.identity) as GameObject;
                     Cube.name = (x + "+" + z + "Wall"); 
                 }
                 if(maze[x,z] == 0){
