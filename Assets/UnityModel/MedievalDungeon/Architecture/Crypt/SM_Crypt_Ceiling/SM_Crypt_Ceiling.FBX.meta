@@ -9,11 +9,6 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: M_StoneWall_Inst
     second: {fileID: 2100000, guid: 8a22761c0223e4a459702db6106d7f4f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: No Name
-    second: {fileID: 2100000, guid: 48abf8e3fd910490aaaf8eecbe8112a1, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
