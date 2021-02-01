@@ -26,7 +26,6 @@ public class sample : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Alpha8)){
             VectorControl(8);
         }
-        
     }
     void VectorControl(int value){
         GameObject room;

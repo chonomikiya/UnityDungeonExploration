@@ -20,7 +20,7 @@ public class MazeGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Return)){
+        if(Input.GetKeyDown(KeyCode.Space)){
             Maze = myMazeDigger.CreateMaze();
             instanceMaze(Maze);
         }
@@ -42,11 +42,11 @@ public class MazeGenerator : MonoBehaviour
         for(int z=0;z<maze.GetLength(1);z++){
             for(int x=0;x<maze.GetLength(0);x++){
                 if(maze[x,z] == 1){
-                    GameObject Cube = Instantiate(WallPrefab,new Vector3(x*init0ffset,0,z*init0ffset),Quaternion.identity) as GameObject;
+                    GameObject Cube = Instantiate(WallPrefab,new Vector3(-x*init0ffset,0,z*init0ffset),Quaternion.identity) as GameObject;
                     Cube.name = (x + "+" + z + "Wall"); 
                 }
                 if(maze[x,z] == 0){
-                    GameObject Path = Instantiate(PathPrefab,new Vector3(x*init0ffset,0,z*init0ffset),Quaternion.identity) as GameObject;
+                    GameObject Path = Instantiate(PathPrefab,new Vector3(-x*init0ffset,0,z*init0ffset),Quaternion.identity) as GameObject;
                     Path.name = (x + "+" + z + "Path");
                 }
                 // arrayvalue += argmaze[x,y];
@@ -57,6 +57,4 @@ public class MazeGenerator : MonoBehaviour
         }
     }
 }
-/*
 
-*/
