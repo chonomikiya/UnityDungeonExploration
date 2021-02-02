@@ -25,19 +25,19 @@ public class MazeGenerator : MonoBehaviour
             instanceMaze(Maze);
         }
     }
-    void DebugArray(int[,] argmaze){
-        for(int y=0;y<argmaze.GetLength(1);y++){
-            int arrayvalue = 9;
-            for(int x=0;x<argmaze.GetLength(0);x++){
-                arrayvalue *= 10;
-                // arrayvalue += argmaze[x,y];
-                // Debug.Log(argmaze[x,y]);
-                Debug.Log(arrayvalue);
-            }
-            // Debug.Log(arrayvalue);
+    // void DebugArray(int[,] argmaze){
+    //     for(int y=0;y<argmaze.GetLength(1);y++){
+    //         int arrayvalue = 9;
+    //         for(int x=0;x<argmaze.GetLength(0);x++){
+    //             arrayvalue *= 10;
+    //             // arrayvalue += argmaze[x,y];
+    //             // Debug.Log(argmaze[x,y]);
+    //             Debug.Log(arrayvalue);
+    //         }
+    //         // Debug.Log(arrayvalue);
             
-        }
-    }
+    //     }
+    // }
     void instanceMaze(int [,] maze){
         for(int z=0;z<maze.GetLength(1);z++){
             for(int x=0;x<maze.GetLength(0);x++){

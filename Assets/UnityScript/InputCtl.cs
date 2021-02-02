@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class InputCtl : MonoBehaviour {
 
     //オブジェクトと結びつける
-    public InputField inputField;
+    private InputField inputField;
     void Start () {
     //Componentを扱えるようにする
         inputField = inputField.GetComponent<InputField> ();
