@@ -7,9 +7,7 @@ public class randomCtl
     private string seed = "";
     public string Seed{get{return seed;}set{seed = value;}}
     public void InitRandom(){
-        string myseed = Seed;
-        ToInt32("aaa");
-        myRandom = new System.Random()
-        ;
+        
+        myRandom = new System.Random();
     }
 }
