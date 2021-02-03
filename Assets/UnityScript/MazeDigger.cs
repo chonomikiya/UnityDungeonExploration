@@ -74,7 +74,7 @@ namespace DungeonExploration.Maze{
                 // 指定座標から掘れなくなるまで堀り続ける
                 //default var rnd = new Random();
 
-                var rnd = myrnd;
+                var rnd = this.myrnd;
                 while (true)
                 {
                     // 掘り進めることができる方向のリストを作成
@@ -176,6 +176,9 @@ namespace DungeonExploration.Maze{
             {
                 public int X { get; set; }
                 public int Y { get; set; }
+            }
+            public void InitMazeSeed(System.Random argRandom){
+                myrnd = argRandom;
             }
 
             // 方向
