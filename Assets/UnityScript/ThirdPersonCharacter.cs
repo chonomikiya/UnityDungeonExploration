@@ -1,6 +1,7 @@
 using UnityEngine;
+using DungeonExploration.Maze;
 
-namespace UnityStandardAssets.Characters.ThirdPerson
+namespace DungeonExploration.Player
 {
 	[RequireComponent(typeof(Rigidbody))]
 	[RequireComponent(typeof(CapsuleCollider))]
@@ -28,6 +29,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		Vector3 m_CapsuleCenter;
 		CapsuleCollider m_Capsule;
 		bool m_Crouching;
+		bool m_torch;
 
 
 		void Start()
@@ -43,7 +45,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		}
 
 
-		public void Move(Vector3 move, bool crouch, bool jump)
+		public void Move(Vector3 move, bool crouch, bool jump, bool torch)
 		{
 
 			// convert the world relative moveInput vector into a local-relative
@@ -67,12 +69,22 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			{
 				HandleAirborneMovement();
 			}
+			SetEquidStatus(torch);
+
 
 			ScaleCapsuleForCrouching(crouch);
 			PreventStandingInLowHeadroom();
 
 			// send input and other state parameters to the animator
 			UpdateAnimator(move);
+		}
+		void SetEquidStatus(bool torch){
+			if(torch){
+				Debug.Log("true torch");
+				m_torch = true;
+			}else{
+				m_torch = false;
+			}
 		}
 
 
@@ -117,13 +129,13 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 		void UpdateAnimator(Vector3 move)
 		{
+
 			// update the animator parameters
 			m_Animator.SetFloat("Forward", m_ForwardAmount, 0.1f, Time.deltaTime);
 			m_Animator.SetFloat("Turn", m_TurnAmount, 0.1f, Time.deltaTime);
-			Debug.Log(m_TurnAmount * Mathf.Rad2Deg);
-
 			m_Animator.SetBool("Crouch", m_Crouching);
 			m_Animator.SetBool("OnGround", m_IsGrounded);
+			m_Animator.SetBool("equipTorch",m_torch);
 			if (!m_IsGrounded)
 			{
 				m_Animator.SetFloat("Jump", m_Rigidbody.velocity.y);

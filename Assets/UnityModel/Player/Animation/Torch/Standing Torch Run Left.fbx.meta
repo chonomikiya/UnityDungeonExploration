@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: e18564e6cdd2b420cbc6ed873df24e53
+guid: 2c2b28b6610d04e058242f6e9c7bcb41
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: idle
+    second: Standing Torch Run Left
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -38,11 +38,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: idle
+      name: Standing Torch Run Left
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 300
+      lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -533,35 +533,40 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: idle (2)(Clone)
+    - name: Standing Torch Run Left(Clone)
       parentName: 
-      position: {x: 0.041699067, y: -0.060829695, z: 0.041996222}
-      rotation: {x: -0.68347317, y: 0.2492397, z: 0.26763204, w: 0.63175714}
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Armature
+      parentName: Standing Torch Run Left(Clone)
+      position: {x: 0.2632181, y: -0.03177345, z: -0.17999676}
+      rotation: {x: -0.6034377, y: -0.2274595, z: -0.08455347, w: 0.7595893}
       scale: {x: 100, y: 100, z: 100}
     - name: Hips
-      parentName: idle (2)(Clone)
-      position: {x: -0, y: -0.00022399999, z: 0.0090189995}
-      rotation: {x: 0.6716835, y: -0.15031065, z: -0.21202552, w: 0.69375306}
+      parentName: Armature
+      position: {x: -0.00025064603, y: -0.00026512862, z: 0.009471109}
+      rotation: {x: 0.5561404, y: 0.15691687, z: 0.10853225, w: 0.8088916}
       scale: {x: 1, y: 1, z: 1}
     - name: Spine
       parentName: Hips
       position: {x: -0, y: 0.002133, z: 0}
-      rotation: {x: 0.045591045, y: -0.06547501, z: 0.015441858, w: 0.99669254}
+      rotation: {x: 0.038946636, y: 0.009006827, z: -0.034114737, w: 0.9986182}
       scale: {x: 1, y: 1, z: 1}
     - name: Chest
       parentName: Spine
       position: {x: -0, y: 0.002124, z: 0}
-      rotation: {x: 0.112938166, y: -0.13663545, z: 0.019101115, w: 0.9839771}
+      rotation: {x: 0.10010291, y: 0.023079855, z: -0.0948311, w: 0.9901787}
       scale: {x: 1, y: 1, z: 1}
     - name: Neck
       parentName: Chest
       position: {x: -0, y: 0.002126, z: 0}
-      rotation: {x: 0.003383243, y: 0.9895129, z: 0.14436345, w: -0.0034710611}
+      rotation: {x: -0.013720594, y: 0.9848985, z: 0.17256734, w: -0.0026984045}
       scale: {x: 1, y: 1, z: 1}
     - name: Head
       parentName: Neck
       position: {x: -0, y: 0.000996, z: 0}
-      rotation: {x: 0.17610602, y: 0.0025775488, z: 0.0011285516, w: 0.9843672}
+      rotation: {x: 0.20719066, y: 0.0056819175, z: 0.00036323644, w: 0.97828406}
       scale: {x: 1, y: 1, z: 1}
     - name: Eye.L
       parentName: Head
@@ -586,7 +591,7 @@ ModelImporter:
     - name: Eye.R
       parentName: Head
       position: {x: -0.00034899998, y: 0.001001, z: -0.000753}
-      rotation: {x: -0.6816445, y: 0.0015173836, z: 0.002366089, w: 0.7316781}
+      rotation: {x: -0.6581222, y: 0.004521053, z: 0.003462751, w: 0.7528896}
       scale: {x: 1, y: 1, z: 1}
     - name: Eye.R_end
       parentName: Eye.R
@@ -596,37 +601,37 @@ ModelImporter:
     - name: Shoulder.L
       parentName: Chest
       position: {x: -0.000771, y: 0.0013019999, z: -0.000116999996}
-      rotation: {x: -0.49150845, y: 0.41799158, z: 0.5620668, w: 0.5174779}
+      rotation: {x: -0.35283837, y: 0.52555174, z: 0.56051195, w: 0.53397286}
       scale: {x: 1, y: 1, z: 1}
     - name: UpperArm.L
       parentName: Shoulder.L
       position: {x: -0, y: 0.0015449999, z: 0}
-      rotation: {x: 0.067484334, y: 0.20259893, z: 0.10874067, w: 0.9708631}
+      rotation: {x: -0.07634619, y: 0.7188247, z: -0.13225283, w: 0.678212}
       scale: {x: 1, y: 1, z: 1}
     - name: LowerArm.L
       parentName: UpperArm.L
       position: {x: -0, y: 0.0028879999, z: 0}
-      rotation: {x: 0.011355561, y: -0.06320542, z: 0.02505309, w: 0.9976215}
+      rotation: {x: 0.0122286305, y: -0.16506518, z: 0.005529784, w: 0.9861914}
       scale: {x: 1, y: 1, z: 1}
     - name: Hand.L
       parentName: LowerArm.L
       position: {x: -0, y: 0.003075, z: 0}
-      rotation: {x: 0.066029415, y: -0.26660478, z: -0.032821912, w: 0.96098113}
+      rotation: {x: 0.012920813, y: 0.2109678, z: -0.019833857, w: 0.97720635}
       scale: {x: 1, y: 1, z: 1}
     - name: ThumbProximal.L
       parentName: Hand.L
       position: {x: -0.000463, y: 0.00046399998, z: 0.00016499999}
-      rotation: {x: 0.3503188, y: -0.49801475, z: 0.19494331, w: 0.76893115}
+      rotation: {x: -0.072905496, y: -0.6898371, z: 0.3846716, w: 0.6089641}
       scale: {x: 1, y: 1, z: 1}
     - name: ThumbMiddle.L
       parentName: ThumbProximal.L
       position: {x: -0, y: 0.00038699998, z: 0}
-      rotation: {x: 0.0012656823, y: 0.12016064, z: -0.0073053692, w: 0.9927268}
+      rotation: {x: -0.028255919, y: 0.09065835, z: -0.010879183, w: 0.99542165}
       scale: {x: 1, y: 1, z: 1}
     - name: ThumbDistal.L
       parentName: ThumbMiddle.L
       position: {x: -0, y: 0.00029999999, z: 0}
-      rotation: {x: 0.0000000010205283, y: -0.036393926, z: 0.000000028022598, w: 0.99933755}
+      rotation: {x: -0.018679751, y: -0.006780519, z: -0.0061605508, w: 0.9997835}
       scale: {x: 1, y: 1, z: 1}
     - name: ThumbDistal.L_end
       parentName: ThumbDistal.L
@@ -636,17 +641,17 @@ ModelImporter:
     - name: IndexProximal.L
       parentName: Hand.L
       position: {x: -0.00036699997, y: 0.001223, z: 0.000133}
-      rotation: {x: 0.08532817, y: -0.6046068, z: 0.07370286, w: 0.78850347}
+      rotation: {x: 0.012296598, y: -0.69961005, z: 0.049307544, w: 0.7127155}
       scale: {x: 1, y: 1, z: 1}
     - name: IndexMiddle.L
       parentName: IndexProximal.L
       position: {x: -0, y: 0.000332, z: 0}
-      rotation: {x: 0.007142274, y: -0.22258554, z: 0.035708334, w: 0.9742328}
+      rotation: {x: 0.003396595, y: -0.22021429, z: 0.014683278, w: 0.97533506}
       scale: {x: 1, y: 1, z: 1}
     - name: IndexDistal.L
       parentName: IndexMiddle.L
       position: {x: -0, y: 0.000293, z: 0}
-      rotation: {x: -0.000000015862806, y: -0.41474015, z: 0.000000015719055, w: 0.9099399}
+      rotation: {x: 0.013845392, y: -0.42096332, z: 0.01220856, w: 0.90688986}
       scale: {x: 1, y: 1, z: 1}
     - name: IndexDistal.L_end
       parentName: IndexDistal.L
@@ -656,17 +661,17 @@ ModelImporter:
     - name: MiddleProximal.L
       parentName: Hand.L
       position: {x: -0.000107, y: 0.0012459999, z: 0.000093999995}
-      rotation: {x: -0.01893068, y: -0.627172, z: 0.03668185, w: 0.7777862}
+      rotation: {x: 0.017957238, y: -0.66742057, z: 0.052022453, w: 0.7426446}
       scale: {x: 1, y: 1, z: 1}
     - name: MiddleMiddle.L
       parentName: MiddleProximal.L
       position: {x: -0, y: 0.00033399998, z: 0}
-      rotation: {x: 0.0130335195, y: -0.267101, z: 0.03133468, w: 0.96307075}
+      rotation: {x: 0.004324758, y: -0.27586702, z: 0.014842557, w: 0.96107155}
       scale: {x: 1, y: 1, z: 1}
     - name: MiddleDistal.L
       parentName: MiddleMiddle.L
       position: {x: -0, y: 0.000308, z: 0}
-      rotation: {x: -0.000000012942828, y: -0.4377083, z: 0.0000000171994, w: 0.89911705}
+      rotation: {x: 0.021630501, y: -0.44136992, z: 0.012027457, w: 0.89698386}
       scale: {x: 1, y: 1, z: 1}
     - name: MiddleDistal.L_end
       parentName: MiddleDistal.L
@@ -676,17 +681,17 @@ ModelImporter:
     - name: RingProximal.L
       parentName: Hand.L
       position: {x: 0.00010999999, y: 0.0011779999, z: 0.000033}
-      rotation: {x: -0.006140073, y: -0.63662124, z: 0.04483805, w: 0.7698476}
+      rotation: {x: 0.02198494, y: -0.691645, z: 0.046887707, w: 0.72037876}
       scale: {x: 1, y: 1, z: 1}
     - name: RingMiddle.L
       parentName: RingProximal.L
       position: {x: -0, y: 0.000274, z: 0}
-      rotation: {x: 0.014463134, y: -0.31230485, z: 0.025531625, w: 0.9495287}
+      rotation: {x: 0.007395375, y: -0.30427563, z: 0.016836338, w: 0.9524065}
       scale: {x: 1, y: 1, z: 1}
     - name: RingDistal.L
       parentName: RingMiddle.L
       position: {x: -0, y: 0.000294, z: 0}
-      rotation: {x: -0.00000002392369, y: -0.43262663, z: -0.000000050184482, w: 0.9015732}
+      rotation: {x: 0.018531073, y: -0.4289431, z: 0.008133631, w: 0.9031048}
       scale: {x: 1, y: 1, z: 1}
     - name: RingDistal.L_end
       parentName: RingDistal.L
@@ -696,17 +701,17 @@ ModelImporter:
     - name: LittleProximal.L
       parentName: Hand.L
       position: {x: 0.000333, y: 0.00104, z: -0.000077}
-      rotation: {x: -0.0060653887, y: -0.645409, z: 0.040820867, w: 0.7627215}
+      rotation: {x: 0.020310365, y: -0.6403794, z: 0.043918148, w: 0.7665331}
       scale: {x: 1, y: 1, z: 1}
     - name: LittleMiddle.L
       parentName: LittleProximal.L
       position: {x: -0, y: 0.000251, z: 0}
-      rotation: {x: 0.015005974, y: -0.32912832, z: 0.021591382, w: 0.94391906}
+      rotation: {x: 0.006750425, y: -0.32471305, z: 0.0138931675, w: 0.94568646}
       scale: {x: 1, y: 1, z: 1}
     - name: LittleDistal.L
       parentName: LittleMiddle.L
       position: {x: -0, y: 0.000242, z: 0}
-      rotation: {x: -0.0000000348517, y: -0.43731254, z: 0.0000000062086327, w: 0.89930964}
+      rotation: {x: 0.018331299, y: -0.44105986, z: 0.0070029916, w: 0.8972631}
       scale: {x: 1, y: 1, z: 1}
     - name: LittleDistal.L_end
       parentName: LittleDistal.L
@@ -716,37 +721,37 @@ ModelImporter:
     - name: Shoulder.R
       parentName: Chest
       position: {x: 0.000771, y: 0.0013019999, z: -0.000116999996}
-      rotation: {x: 0.7043094, y: 0.5616571, z: -0.30028233, w: 0.31356046}
+      rotation: {x: 0.70721227, y: 0.59372884, z: -0.2906492, w: 0.25071916}
       scale: {x: 1, y: 1, z: 1}
     - name: UpperArm.R
       parentName: Shoulder.R
       position: {x: -0, y: 0.0015449999, z: 0}
-      rotation: {x: 0.009208052, y: -0.2973133, z: -0.14962818, w: 0.94293773}
+      rotation: {x: -0.1338277, y: -0.4707727, z: -0.057136547, w: 0.8701716}
       scale: {x: 1, y: 1, z: 1}
     - name: LowerArm.R
       parentName: UpperArm.R
       position: {x: -0, y: 0.002887, z: 0}
-      rotation: {x: 0.00011771216, y: -0.32203645, z: 0.029068317, w: 0.9462809}
+      rotation: {x: -0.00007094439, y: -0.31584597, z: 0.03223428, w: 0.94826275}
       scale: {x: 1, y: 1, z: 1}
     - name: Hand.R
       parentName: LowerArm.R
       position: {x: -0, y: 0.003074, z: 0}
-      rotation: {x: 0.07425139, y: 0.026456257, z: -0.029575815, w: 0.9964497}
+      rotation: {x: -0.013176668, y: -0.051298354, z: 0.02306599, w: 0.99833}
       scale: {x: 1, y: 1, z: 1}
     - name: ThumbProximal.R
       parentName: Hand.R
       position: {x: -0.00037199998, y: 0.000463, z: 0.000322}
-      rotation: {x: 0.39624172, y: -0.754183, z: 0.04824412, w: 0.5214144}
+      rotation: {x: 0.38160825, y: -0.56164134, z: 0.0029524004, w: 0.7341155}
       scale: {x: 1, y: 1, z: 1}
     - name: ThumbMiddle.R
       parentName: ThumbProximal.R
       position: {x: -0, y: 0.000386, z: 0}
-      rotation: {x: -0.02413408, y: 0.09420712, z: 0.024390783, w: 0.99496114}
+      rotation: {x: -0.03083989, y: -0.08578917, z: 0.02205867, w: 0.9955915}
       scale: {x: 1, y: 1, z: 1}
     - name: ThumbDistal.R
       parentName: ThumbMiddle.R
       position: {x: -0, y: 0.00029999999, z: 0}
-      rotation: {x: 0.00000006699716, y: -0.06667472, z: 0.000000063766215, w: 0.9977748}
+      rotation: {x: -0.02450754, y: -0.13880597, z: 0.02355811, w: 0.989736}
       scale: {x: 1, y: 1, z: 1}
     - name: ThumbDistal.R_end
       parentName: ThumbDistal.R
@@ -756,17 +761,17 @@ ModelImporter:
     - name: IndexProximal.R
       parentName: Hand.R
       position: {x: -0.00029599998, y: 0.001222, z: 0.00025399998}
-      rotation: {x: 0.043049514, y: -0.6363739, z: -0.010882618, w: 0.77010167}
+      rotation: {x: 0.04685411, y: -0.61810577, z: -0.041648846, w: 0.78359145}
       scale: {x: 1, y: 1, z: 1}
     - name: IndexMiddle.R
       parentName: IndexProximal.R
       position: {x: -0, y: 0.000332, z: 0}
-      rotation: {x: -0.02765758, y: -0.22969055, z: -0.023299789, w: 0.97259164}
+      rotation: {x: -0.018378023, y: -0.2561537, z: -0.016468307, w: 0.966321}
       scale: {x: 1, y: 1, z: 1}
     - name: IndexDistal.R
       parentName: IndexMiddle.R
       position: {x: -0, y: 0.000293, z: 0}
-      rotation: {x: 0.000000015261842, y: -0.48905653, z: -0.00000005018431, w: 0.8722521}
+      rotation: {x: -0.02647287, y: -0.51606447, z: 0.0020821667, w: 0.85613805}
       scale: {x: 1, y: 1, z: 1}
     - name: IndexDistal.R_end
       parentName: IndexDistal.R
@@ -776,17 +781,17 @@ ModelImporter:
     - name: MiddleProximal.R
       parentName: Hand.R
       position: {x: -0.000135, y: 0.0012449999, z: 0.000046999998}
-      rotation: {x: 0.043086134, y: -0.58387184, z: -0.04880638, w: 0.8092312}
+      rotation: {x: 0.05093214, y: -0.6049163, z: -0.038838614, w: 0.7937089}
       scale: {x: 1, y: 1, z: 1}
     - name: MiddleMiddle.R
       parentName: MiddleProximal.R
       position: {x: -0, y: 0.00033399998, z: 0}
-      rotation: {x: -0.018295325, y: -0.2691288, z: -0.023800276, w: 0.9626363}
+      rotation: {x: -0.015250806, y: -0.28615505, z: -0.014426534, w: 0.9579533}
       scale: {x: 1, y: 1, z: 1}
     - name: MiddleDistal.R
       parentName: MiddleMiddle.R
       position: {x: -0, y: 0.000308, z: 0}
-      rotation: {x: 7.0956013e-10, y: -0.48879224, z: 0.0000000200389, w: 0.8724002}
+      rotation: {x: -0.025782686, y: -0.49705428, z: -0.0012088879, w: 0.86733556}
       scale: {x: 1, y: 1, z: 1}
     - name: MiddleDistal.R_end
       parentName: MiddleDistal.R
@@ -796,17 +801,17 @@ ModelImporter:
     - name: RingProximal.R
       parentName: Hand.R
       position: {x: 0.000025, y: 0.0011779999, z: -0.000111999994}
-      rotation: {x: 0.03457641, y: -0.53788066, z: -0.04120035, w: 0.84130335}
+      rotation: {x: 0.048147496, y: -0.5883297, z: -0.03852458, w: 0.8062666}
       scale: {x: 1, y: 1, z: 1}
     - name: RingMiddle.R
       parentName: RingProximal.R
       position: {x: -0, y: 0.000274, z: 0}
-      rotation: {x: -0.014986966, y: -0.31143287, z: -0.022740694, w: 0.94987786}
+      rotation: {x: -0.012962035, y: -0.29902035, z: -0.012909711, w: 0.9540714}
       scale: {x: 1, y: 1, z: 1}
     - name: RingDistal.R
       parentName: RingMiddle.R
       position: {x: -0, y: 0.000294, z: 0}
-      rotation: {x: 0.000000086452594, y: -0.41182715, z: 0.000000100297896, w: 0.91126204}
+      rotation: {x: -0.025968095, y: -0.404124, z: -0.0011717442, w: 0.9143348}
       scale: {x: 1, y: 1, z: 1}
     - name: RingDistal.R_end
       parentName: RingDistal.R
@@ -816,17 +821,17 @@ ModelImporter:
     - name: LittleProximal.R
       parentName: Hand.R
       position: {x: 0.000231, y: 0.001039, z: -0.000252}
-      rotation: {x: 0.03001443, y: -0.5207309, z: -0.03813848, w: 0.8523403}
+      rotation: {x: 0.052279163, y: -0.6118928, z: -0.034723103, w: 0.7884468}
       scale: {x: 1, y: 1, z: 1}
     - name: LittleMiddle.R
       parentName: LittleProximal.R
       position: {x: -0, y: 0.000251, z: 0}
-      rotation: {x: -0.011432563, y: -0.30964833, z: -0.022706626, w: 0.9505112}
+      rotation: {x: -0.012581449, y: -0.24462873, z: -0.012378378, w: 0.9694562}
       scale: {x: 1, y: 1, z: 1}
     - name: LittleDistal.R
       parentName: LittleMiddle.R
       position: {x: -0, y: 0.000242, z: 0}
-      rotation: {x: 0.000000007663919, y: -0.33593622, z: -0.000000044514685, w: 0.94188476}
+      rotation: {x: -0.025961112, y: -0.29198024, z: -0.0028563116, w: 0.9560676}
       scale: {x: 1, y: 1, z: 1}
     - name: LittleDistal.R_end
       parentName: LittleDistal.R
@@ -836,22 +841,22 @@ ModelImporter:
     - name: UpperLeg.L
       parentName: Hips
       position: {x: -0.0010149999, y: 0.00018799999, z: -0.00017999999}
-      rotation: {x: 0.8770238, y: -0.06321209, z: -0.47615674, w: 0.010400599}
+      rotation: {x: 0.936967, y: -0.107062355, z: -0.33255842, w: -0.0059525743}
       scale: {x: 1, y: 1, z: 1}
     - name: LowerLeg.L
       parentName: UpperLeg.L
       position: {x: -0, y: 0.004421, z: 0}
-      rotation: {x: 0.0683791, y: -0.12182287, z: -0.28432718, w: 0.9484944}
+      rotation: {x: 0.16770017, y: 0.06253232, z: -0.25199974, w: 0.9510324}
       scale: {x: 1, y: 1, z: 1}
     - name: Foot.L
       parentName: LowerLeg.L
       position: {x: -0, y: 0.004396, z: 0}
-      rotation: {x: 0.555416, y: -0.42604035, z: 0.5843653, w: 0.41051185}
+      rotation: {x: -0.25422716, y: 0.74676657, z: -0.5445914, w: -0.28483057}
       scale: {x: 1, y: 1, z: 1}
     - name: Toe.L
       parentName: Foot.L
       position: {x: -0, y: 0.0010289999, z: 0}
-      rotation: {x: 0.014272531, y: -0.00611358, z: 0.044295356, w: 0.99889785}
+      rotation: {x: -0.0101737715, y: -0.00045005497, z: 0.019224312, w: 0.99976337}
       scale: {x: 1, y: 1, z: 1}
     - name: Toe.L_end
       parentName: Toe.L
@@ -861,22 +866,22 @@ ModelImporter:
     - name: UpperLeg.R
       parentName: Hips
       position: {x: 0.0010149999, y: 0.00018799999, z: -0.00017999999}
-      rotation: {x: 0.751263, y: 0.08363709, z: -0.64793503, w: 0.093749374}
+      rotation: {x: 0.85907227, y: -0.02720273, z: -0.51068425, w: 0.021365726}
       scale: {x: 1, y: 1, z: 1}
     - name: LowerLeg.R
       parentName: UpperLeg.R
       position: {x: -0, y: 0.004421, z: 0}
-      rotation: {x: 0.09266534, y: -0.08233698, z: -0.2723379, w: 0.95418334}
+      rotation: {x: 0.15689285, y: 0.13971111, z: -0.2909546, w: 0.9333868}
       scale: {x: 1, y: 1, z: 1}
     - name: Foot.R
       parentName: LowerLeg.R
       position: {x: -0, y: 0.004396, z: 0}
-      rotation: {x: -0.6012979, y: 0.46887276, z: -0.5262029, w: -0.37644356}
+      rotation: {x: -0.39650133, y: 0.4392278, z: -0.79350233, w: -0.1421959}
       scale: {x: 1, y: 1, z: 1}
     - name: Toe.R
       parentName: Foot.R
       position: {x: -0, y: 0.0010289999, z: 0}
-      rotation: {x: 0.0021375027, y: -0.0015327251, z: -0.016329447, w: 0.9998632}
+      rotation: {x: 0.024794066, y: -0.011189927, z: -0.020714078, w: 0.99941534}
       scale: {x: 1, y: 1, z: 1}
     - name: Toe.R_end
       parentName: Toe.R
@@ -893,7 +898,7 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
