@@ -6,8 +6,8 @@ using DungeonExploration.Maze;
 
 public class MazeGenerator : MonoBehaviour
 {
-    MazeDigger myMazeDigger = new MazeDigger(15,15);
     RandomCtl myRandomCtl = new RandomCtl();
+    MazeDigger myMazeDigger = new MazeDigger(19,19);
     int [,] Maze;
     [SerializeField] int init0ffset = 10;
 
