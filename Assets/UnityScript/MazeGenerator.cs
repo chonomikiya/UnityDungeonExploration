@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DungeonExploration.Maze;
 
+
 public class MazeGenerator : MonoBehaviour
 {
     RandomCtl myRandomCtl = new RandomCtl();
@@ -49,18 +50,25 @@ public class MazeGenerator : MonoBehaviour
                     GameObject Cube = Instantiate(WallPrefab,new Vector3(x*init0ffset,0,-z*init0ffset),Quaternion.identity) as GameObject;
                     Cube.name = (x + "+" + z + "Wall"); 
                     Cube.transform.parent = MazeGroup.transform;
+                    Cube.AddComponent<MazeInfo>();
+                    Cube.GetComponent<MazeInfo>().SetMapPos(x,z);
                 }
                 if(maze[x,z] == 0){
                     GameObject Path = Instantiate(PathPrefab,new Vector3(x*init0ffset,0,-z*init0ffset),Quaternion.identity) as GameObject;
                     Path.name = (x + "+" + z + "Path");
                     Path.transform.parent = MazeGroup.transform;
+                    Path.AddComponent<MazeInfo>();
+                    Path.GetComponent<MazeInfo>().SetMapPos(x,z);
                 }
                 // arrayvalue += argmaze[x,y];
                 // Debug.Log(argmaze[x,y]);
             }
-            // Debug.Log(arrayvalue);
-            
+            // Debug.Log(arrayvalue);       
         }
     }
+    public int GetDirection(int [,] _maze){
+        
+        
+        return 0;
+    }
 }
-
