@@ -18,6 +18,7 @@ namespace DungeonExploration.Maze{
             [SerializeField] int dir;
             [SerializeField] string strDir;
             [SerializeField] Map mapdir = Map.E|Map.N|Map.S|Map.W;
+            [SerializeField] int [] intdir = new int [] {0,0,0,0};
 
             
             // Start is called before the first frame update
@@ -31,13 +32,16 @@ namespace DungeonExploration.Maze{
             {
                 
             }
-            public void SetMapPos(int _x,int _z){
-                this.xpos = _x;
+            public void SetMapPos(int _z,int _x){
                 this.zpos = _z;
+                this.xpos = _x;
             }
             //NESW
             public void SetMapDir(int _dir){
                 this.dir = _dir;
+            }
+            public void SetIntDir(int[] _mazedir){
+                this.intdir = _mazedir;
             }
         }
 }

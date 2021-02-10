@@ -115,15 +115,29 @@ namespace DungeonExploration.Maze{
                             SetPath(--x, y);
                             break;
                     }
+                    GetDeadEndPath(x,y);
                 }
 
                 // どこにも掘り進められない場合、穴掘り開始候補座標から掘りなおし
                 // 候補座標が存在しないとき、穴掘り完了
+                
                 var cell = GetStartCell();
                 if (cell != null)
                 {
                     Dig(cell.X, cell.Y);
                 }
+            }
+            void GetDeadEndPath(int x,int y){
+                var directions = new List<Direction>();
+                    if (this.Maze[x, y - 1] == Wall && this.Maze[x, y - 2] == Wall)
+                        directions.Add(Direction.Up);
+                    if (this.Maze[x + 1, y] == Wall && this.Maze[x + 2, y] == Wall)
+                        directions.Add(Direction.Right);
+                    if (this.Maze[x, y + 1] == Wall && this.Maze[x, y + 2] == Wall)
+                        directions.Add(Direction.Down);
+                    if (this.Maze[x - 1, y] == Wall && this.Maze[x - 2, y] == Wall)
+                        directions.Add(Direction.Left);
+                    if (directions.Count == 0) Maze[x,y] = Tresure;
             }
 
             // 座標を通路とする(穴掘り開始座標候補の場合は保持)
@@ -135,6 +149,9 @@ namespace DungeonExploration.Maze{
                     // 穴掘り候補座標
                     StartCells.Add(new Cell() { X = x, Y = y });
                 }
+            }
+            private void  SetTresure(int x,int y){
+                this.Maze[x, y] = Tresure;
             }
 
             // 穴掘り開始位置をランダムに取得する
@@ -170,6 +187,7 @@ namespace DungeonExploration.Maze{
             // 通路・壁情報
             const int Path = 0;
             const int Wall = 1;
+            const int Tresure = 2;
 
             // セル情報
             private class Cell
