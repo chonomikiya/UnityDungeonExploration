@@ -20,7 +20,7 @@ public class MazeGenerator : MonoBehaviour
     [SerializeField] GameObject TresurePrefab = null;
     GameObject MazeGroup = null;
 
-    const int Wall = 1,Path = 0;
+    const int Wall = 1,Path = 0,Tresure = 2;
 
     // Start is called before the first frame update
     void Start(){}
@@ -37,6 +37,11 @@ public class MazeGenerator : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.E)){
             DeleteMaze();    
+        }
+        if(Input.GetKeyDown(KeyCode.T)){
+            GameObject test = Instantiate(PathPrefab);
+            test.AddComponent<MazeInfo>();
+            test.GetComponent<MazeInfo>().SetMiniMap();
         }
     }
     void DeleteMaze(){
@@ -56,14 +61,14 @@ public class MazeGenerator : MonoBehaviour
         MazeGroup = new GameObject("empty");
         for(int _z=0;_z<maze.GetLength(1);_z++){
             for(int _x=0;_x<maze.GetLength(0);_x++){
-                if(maze[_z,_x] == 1){
+                if(maze[_z,_x] == Wall){
                     GameObject Cube = Instantiate(WallPrefab,new Vector3(_x*init0ffset,0,-_z*init0ffset),Quaternion.identity) as GameObject;
                     Cube.name = (_z + "+" + _x + "Wall"); 
                     Cube.transform.parent = MazeGroup.transform;
                     Cube.AddComponent<MazeInfo>();
                     Cube.GetComponent<MazeInfo>().SetMapPos(_x,_z);
                 }
-                if(maze[_z,_x] == 0){
+                if(maze[_z,_x] == Path){
                     GameObject Path = Instantiate(PathPrefab,new Vector3(_x*init0ffset,0,-_z*init0ffset),Quaternion.identity) as GameObject;
                     Path.name = (_z + "+" + _x + "Path");
                     Path.transform.parent = MazeGroup.transform;
@@ -72,7 +77,7 @@ public class MazeGenerator : MonoBehaviour
                     Path.GetComponent<MazeInfo>().SetMapDir(GetMazeDirection(maze ,_z,_x));
                     Path.GetComponent<MazeInfo>().SetIntDir(GetMazeDirArray(maze,_z,_x));
                 }
-                if((maze[_z,_x]) == 2){
+                if((maze[_z,_x]) == Tresure){
                     GameObject Tresure = Instantiate(TresurePrefab,new Vector3(_x*init0ffset,0,-_z*init0ffset),GetTresureDirection(_z,_x)) as GameObject;
                     Tresure.name = (_z + "+" + _x + "Tresure");
                     Tresure.transform.parent = MazeGroup.transform;
