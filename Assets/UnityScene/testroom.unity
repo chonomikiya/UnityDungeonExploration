@@ -453,6 +453,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &687585338 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8448068320582993291, guid: f86ec16bd1a104821abdee0ae1d2ed82,
+    type: 3}
+  m_PrefabInstance: {fileID: 8448068320177896881}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &772379523
 GameObject:
   m_ObjectHideFlags: 0
@@ -1160,6 +1166,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6464127219567574832, guid: 3023af46931fe4d26a15dc8e056a8aca,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6464127219567574832, guid: 3023af46931fe4d26a15dc8e056a8aca,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6566418219374081116, guid: 3023af46931fe4d26a15dc8e056a8aca,
         type: 3}
       propertyPath: m_RootOrder
@@ -1497,6 +1513,7 @@ MonoBehaviour:
   Width: 19
   Height: 19
   init0ffset: 10
+  myMapUI: {fileID: 687585338}
   WallPrefab: {fileID: 4479607440520196038, guid: d694a327510aa44b394811090870e91a,
     type: 3}
   PathPrefab: {fileID: 6566418219374081117, guid: 3023af46931fe4d26a15dc8e056a8aca,
@@ -1604,3 +1621,72 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &8448068320177896881
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8448068320582993291, guid: f86ec16bd1a104821abdee0ae1d2ed82,
+        type: 3}
+      propertyPath: m_Name
+      value: miniMapCtl
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448068320582993293, guid: f86ec16bd1a104821abdee0ae1d2ed82,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448068320582993293, guid: f86ec16bd1a104821abdee0ae1d2ed82,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 77.249664
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448068320582993293, guid: f86ec16bd1a104821abdee0ae1d2ed82,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 31.648302
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448068320582993293, guid: f86ec16bd1a104821abdee0ae1d2ed82,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -90.55447
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448068320582993293, guid: f86ec16bd1a104821abdee0ae1d2ed82,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448068320582993293, guid: f86ec16bd1a104821abdee0ae1d2ed82,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448068320582993293, guid: f86ec16bd1a104821abdee0ae1d2ed82,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448068320582993293, guid: f86ec16bd1a104821abdee0ae1d2ed82,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448068320582993293, guid: f86ec16bd1a104821abdee0ae1d2ed82,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448068320582993293, guid: f86ec16bd1a104821abdee0ae1d2ed82,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448068320582993293, guid: f86ec16bd1a104821abdee0ae1d2ed82,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f86ec16bd1a104821abdee0ae1d2ed82, type: 3}

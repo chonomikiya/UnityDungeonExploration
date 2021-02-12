@@ -14,6 +14,7 @@ public class MazeGenerator : MonoBehaviour
     MazeDigger myMazeDigger;
     int [,] Maze;
     [SerializeField] int init0ffset = 10;
+    [SerializeField] GameObject myMapUI = null;
 
     [SerializeField] GameObject WallPrefab = null;
     [SerializeField] GameObject PathPrefab = null;
@@ -38,11 +39,10 @@ public class MazeGenerator : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E)){
             DeleteMaze();    
         }
-        if(Input.GetKeyDown(KeyCode.T)){
-            GameObject test = Instantiate(PathPrefab);
-            test.AddComponent<MazeInfo>();
-            test.GetComponent<MazeInfo>().SetMiniMap();
-        }
+        // if(Input.GetKeyDown(KeyCode.T)){
+        //     GameObject test = Instantiate(PathPrefab);
+        //     test.AddComponent<MazeInfo>();
+        // }
     }
     void DeleteMaze(){
         if( MazeGroup != null){
@@ -76,6 +76,9 @@ public class MazeGenerator : MonoBehaviour
                     Path.GetComponent<MazeInfo>().SetMapPos(_x,_z);
                     Path.GetComponent<MazeInfo>().SetMapDir(GetMazeDirection(maze ,_z,_x));
                     Path.GetComponent<MazeInfo>().SetIntDir(GetMazeDirArray(maze,_z,_x));
+                    Path.GetComponent<MazeInfo>().SetMapType(GetMapTypeDirection(_z,_x));
+                    Path.GetComponent<MazeInfo>().SetMapUI_Alias(myMapUI);
+                    Path.GetComponent<MazeInfo>().ChangeMapTexture();
                 }
                 if((maze[_z,_x]) == Tresure){
                     GameObject Tresure = Instantiate(TresurePrefab,new Vector3(_x*init0ffset,0,-_z*init0ffset),GetTresureDirection(_z,_x)) as GameObject;
@@ -85,6 +88,9 @@ public class MazeGenerator : MonoBehaviour
                     Tresure.GetComponent<MazeInfo>().SetMapPos(_x,_z);
                     Tresure.GetComponent<MazeInfo>().SetMapDir(GetMazeDirection(maze,_z,_x));
                     Tresure.GetComponent<MazeInfo>().SetIntDir(GetMazeDirArray(maze,_z,_x));
+                    Tresure.GetComponent<MazeInfo>().SetMapType(GetMapTypeDirection(_z,_x));
+                    // Tresure.GetComponent<MazeInfo>().SetMapUI_Alias(myMapUI);
+                    // Tresure.GetComponent<MazeInfo>().ChangeMapTexture();
                 }
                 // arrayvalue += argmaze[x,y];
                 // Debug.Log(argmaze[x,y]);
@@ -113,6 +119,18 @@ public class MazeGenerator : MonoBehaviour
                 break;
         }
         return _entrance;
+    }
+    public Map GetMapTypeDirection(int _z,int _x){
+        Map _map = Map.Block;
+        //up dir
+        if(Maze[(_z-1),_x] != Wall) _map = _map |Map.N;
+        //right dir 
+        if(Maze[_z,(_x+1)] != Wall) _map = _map|Map.E;
+        //down dir
+        if(Maze[(_z+1),_x] != Wall) _map = _map | Map.S;
+        //left dir
+        if(Maze[_z,(_x-1)] != Wall) _map = _map| Map.W;
+        return _map;
     }
     public int GetMazeDirection(int [,] _maze ,int _z,int _x){
         int  mymap = 0;

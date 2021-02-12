@@ -3,7 +3,24 @@ guid: e6891487410594e6186d6aa2fbe20e9b
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - N: {fileID: 21300000, guid: 922f6a57c49054a9eb66ec71c03f0315, type: 3}
+  - E: {fileID: 21300000, guid: bdaa4d6a596f745a09dc165a8600a0f3, type: 3}
+  - S: {fileID: 21300000, guid: e36ba20ccef3a4dd1898c90f091a2860, type: 3}
+  - W: {fileID: 21300000, guid: 6476b2a589cb04aaa9b92c86deda5b20, type: 3}
+  - NE: {fileID: 21300000, guid: ab0d38575a4d04fe3b07429363d37ced, type: 3}
+  - NES: {fileID: 21300000, guid: b965c4c8802e647ceb381e4591fa1626, type: 3}
+  - NESW: {fileID: 21300000, guid: ebb33e50e8e004f488c4c958170d0372, type: 3}
+  - NEW: {fileID: 21300000, guid: b70cb2ed8be1b49aca957302d2da5b42, type: 3}
+  - NS: {fileID: 21300000, guid: a35f8420c175a4241b82445950087a84, type: 3}
+  - NSW: {fileID: 21300000, guid: da8014398248549dc9348839f7a29cd8, type: 3}
+  - NW: {fileID: 21300000, guid: 4a70eb53b74f040bd96ce662074d1fa3, type: 3}
+  - ES: {fileID: 21300000, guid: 65b06be4be12444b8aedab117e28f3f0, type: 3}
+  - ESW: {fileID: 21300000, guid: 07602ffa70f9340fb83b9204cc04cff6, type: 3}
+  - EW: {fileID: 21300000, guid: 1782cdcd39e9e4e30ba9d20caa360b91, type: 3}
+  - SW: {fileID: 21300000, guid: 04e98a6c210114f5293b1b9c3d4b2648, type: 3}
+  - Block: {fileID: 21300000, guid: d0d1aea2e61b24dc6a49e2ae8fd6db3e, type: 3}
+  - mImage: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

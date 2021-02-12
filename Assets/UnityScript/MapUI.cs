@@ -4,7 +4,8 @@ using System;
 using UnityEngine.UI;
 using DungeonExploration.Maze;
 public class MapUI : MonoBehaviour {
-    [SerializeField] Sprite N,E,S,W,NE,NES,NESW,NEW,NS,NSW,NW,ES,ESW,EW,SW,Block; 
+    [SerializeField] Sprite N,E,S,W,NE,NES,NESW,NEW,NS,NSW,NW,ES,ESW,EW,SW,Block;
+
     [SerializeField] Image mImage;
     private void Start() {
         
@@ -13,8 +14,8 @@ public class MapUI : MonoBehaviour {
         
     }
     
-    Map map;
     //intではなくenumを使って読みやすいswitch文を作るべき
+    //作った
     public Sprite GetMapSprite(Map _map){
         Sprite spritetype = null;
         switch(_map){
@@ -26,6 +27,9 @@ public class MapUI : MonoBehaviour {
                 break;
             case Map.NEW:
                 spritetype = NEW;
+                break;
+            case Map.NE:
+                spritetype = NE;
                 break;
             case Map.NSW:
                 spritetype = NSW;
@@ -69,5 +73,4 @@ public class MapUI : MonoBehaviour {
         }
         return spritetype;
     }
-
 }

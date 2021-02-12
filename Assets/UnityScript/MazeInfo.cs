@@ -30,11 +30,13 @@ namespace DungeonExploration.Maze{
     public class MazeInfo : MonoBehaviour
         {
             [SerializeField] Sprite minimap =null;
+            [SerializeField] SpriteRenderer maprenderer = null;
             [SerializeField] int xpos,zpos;
             [SerializeField] int dir;
             [SerializeField] string strDir;
-            [SerializeField] Map i = Map.NESW;
+            [SerializeField] Map maptype = Map.Block;
             [SerializeField] int [] intdir = new int [] {0,0,0,0};
+            [SerializeField] GameObject myMapUI = null;
 
             
             // Start is called before the first frame update
@@ -43,11 +45,9 @@ namespace DungeonExploration.Maze{
                 
             }
             private void Awake() {
-                minimap = this.transform.GetChild(1).GetComponent<Sprite>();
+                maprenderer = this.transform.GetChild(1).GetComponent<SpriteRenderer>();
             }
-            public void SetMiniMap(){
-            }
-
+            
             // Update is called once per frame
             void Update()
             {
@@ -63,6 +63,22 @@ namespace DungeonExploration.Maze{
             }
             public void SetIntDir(int[] _mazedir){
                 this.intdir = _mazedir;
+            }
+            public Map GetMapType(){
+                return maptype;
+            }
+            public void SetMapType(Map _map){
+                this.maptype = _map;
+            }
+            public void SetMapSprite(Sprite _sprite){
+                
+                this.maprenderer.sprite = _sprite;
+            }
+            public void ChangeMapTexture(){
+                SetMapSprite(myMapUI.GetComponent<MapUI>().GetMapSprite(maptype));
+            }
+            public void SetMapUI_Alias(GameObject _go){
+                myMapUI = _go;
             }
         }
 }
