@@ -8,7 +8,7 @@ using System;
     
 public class MazeGenerator : MonoBehaviour
 {
-    [SerializeField] int Width = 19,Height = 19;
+    [SerializeField] int Width = 15,Height = 15;
 
     RandomCtl myRandomCtl = new RandomCtl();
     MazeDigger myMazeDigger;
