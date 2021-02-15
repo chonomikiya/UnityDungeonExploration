@@ -59,4 +59,6 @@ MonoBehaviour:
   EW: {fileID: 21300000, guid: 1782cdcd39e9e4e30ba9d20caa360b91, type: 3}
   SW: {fileID: 21300000, guid: 04e98a6c210114f5293b1b9c3d4b2648, type: 3}
   Block: {fileID: 21300000, guid: d0d1aea2e61b24dc6a49e2ae8fd6db3e, type: 3}
+  icon_tresure: {fileID: 21300000, guid: 49d38d1ca4b3c9e2dacc0acba2464031, type: 3}
+  icon_gateway: {fileID: 21300000, guid: 49d38d1ca4b3c9e2dacc0acba2464031, type: 3}
   mImage: {fileID: 0}

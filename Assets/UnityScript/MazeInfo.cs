@@ -4,28 +4,6 @@ using UnityEngine;
 
 namespace DungeonExploration.Maze{
 
-    public enum Map{
-            Block = 0b_0000,
-            //  8   4   2   1
-            //  W   S   E   N   
-            N = 0b_0001,
-            NE = N|E,
-            
-            NES = N|E|S,
-            NESW = N|E|S|W,
-            NEW = N|E|W,
-            NS = N|S,
-            NSW = N|S|W,
-            NW = N|W,
-            E = 0b_0010,
-            ES = E|S,
-            ESW = E|S|W,
-            EW = E|W,
-            S = 0b_0100,
-            SW = S|W,
-            W = 0b_1000,
-        }
-
     [RequireComponent(typeof(Sprite))]
     public class MazeInfo : MonoBehaviour
         {
@@ -44,14 +22,17 @@ namespace DungeonExploration.Maze{
             {
                 
             }
-            private void Awake() {
-                maprenderer = this.transform.GetChild(1).GetComponent<SpriteRenderer>();
+            virtual protected void Awake() {
+                GetComponentMapSprite();
             }
             
             // Update is called once per frame
             void Update()
             {
                 
+            }
+            protected void GetComponentMapSprite(){
+                this.maprenderer = this.transform.GetChild(0).GetComponent<SpriteRenderer>();
             }
             public void SetMapPos(int _z,int _x){
                 this.zpos = _z;
@@ -70,15 +51,20 @@ namespace DungeonExploration.Maze{
             public void SetMapType(Map _map){
                 this.maptype = _map;
             }
-            public void SetMapSprite(Sprite _sprite){
-                
+            virtual public void SetMapSprite(Sprite _sprite){
                 this.maprenderer.sprite = _sprite;
             }
-            public void ChangeMapTexture(){
-                SetMapSprite(myMapUI.GetComponent<MapUI>().GetMapSprite(maptype));
+            // virtual public void SetMapSprite(){
+            //     this.maprenderer.sprite = this.myMapUI.GetComponent<MapUI>().GetMapSprite(GetMapType());
+            // }
+            virtual public void ChangeMapSprite(){
+                SetMapSprite(GetComponentMapUI().GetMapSprite(maptype));
             }
-            public void SetMapUI_Alias(GameObject _go){
-                myMapUI = _go;
+            public void SetMapUI_Alias(GameObject _mapui){
+                myMapUI = _mapui;
+            }
+            public MapUI GetComponentMapUI(){
+                return this.myMapUI.GetComponent<MapUI>();
             }
         }
 }

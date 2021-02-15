@@ -19,7 +19,10 @@ public class MazeGenerator : MonoBehaviour
     [SerializeField] GameObject WallPrefab = null;
     [SerializeField] GameObject PathPrefab = null;
     [SerializeField] GameObject TresurePrefab = null;
+    [SerializeField] GameObject myWholeMapCamera = null;
+
     GameObject MazeGroup = null;
+
 
     const int Wall = 1,Path = 0,Tresure = 2;
 
@@ -57,7 +60,7 @@ public class MazeGenerator : MonoBehaviour
     }
     //intの配列からmazeを起こす
     public void instanceMaze(int [,] maze){
-        
+        myWholeMapCamera.GetComponent<wholeMapCamera>().SetWholePos(new Vector3((Width*init0ffset)/2,0,-(Height*init0ffset)/2));
         MazeGroup = new GameObject("empty");
         for(int _z=0;_z<maze.GetLength(1);_z++){
             for(int _x=0;_x<maze.GetLength(0);_x++){
@@ -78,25 +81,60 @@ public class MazeGenerator : MonoBehaviour
                     Path.GetComponent<MazeInfo>().SetIntDir(GetMazeDirArray(maze,_z,_x));
                     Path.GetComponent<MazeInfo>().SetMapType(GetMapTypeDirection(_z,_x));
                     Path.GetComponent<MazeInfo>().SetMapUI_Alias(myMapUI);
-                    Path.GetComponent<MazeInfo>().ChangeMapTexture();
+                    Path.GetComponent<MazeInfo>().ChangeMapSprite();
                 }
                 if((maze[_z,_x]) == Tresure){
+                    // GameObject Tresure = Instantiate(TresurePrefab,new Vector3(_x*init0ffset,0,-_z*init0ffset),Quaternion.identity) as GameObject;
+                    // Tresure.name = (_z + "+" + _x + "Tresure");
+                    // Tresure.transform.parent = MazeGroup.transform;
+                    // Tresure.AddComponent<MazeInfo>();
+                    // Tresure.GetComponent<MazeInfo>().SetMapPos(_x,_z);
+                    // Tresure.GetComponent<MazeInfo>().SetMapDir(GetMazeDirection(maze,_z,_x));
+                    // Tresure.GetComponent<MazeInfo>().SetIntDir(GetMazeDirArray(maze,_z,_x));
+                    // Tresure.GetComponent<MazeInfo>().SetMapType(GetMapTypeDirection(_z,_x));
+                    // Tresure.GetComponent<MazeInfo>().SetMapUI_Alias(myMapUI);
+                    // Tresure.GetComponent<MazeInfo>().ChangeMapSprite();
+                    // Tresure.transform.rotation = GetTresureDirection(_z,_x);
+                    //Mapの画像が回転でズレてしまうため一旦commentout
                     GameObject Tresure = Instantiate(TresurePrefab,new Vector3(_x*init0ffset,0,-_z*init0ffset),GetTresureDirection(_z,_x)) as GameObject;
                     Tresure.name = (_z + "+" + _x + "Tresure");
                     Tresure.transform.parent = MazeGroup.transform;
-                    Tresure.AddComponent<MazeInfo>();
-                    Tresure.GetComponent<MazeInfo>().SetMapPos(_x,_z);
-                    Tresure.GetComponent<MazeInfo>().SetMapDir(GetMazeDirection(maze,_z,_x));
-                    Tresure.GetComponent<MazeInfo>().SetIntDir(GetMazeDirArray(maze,_z,_x));
-                    Tresure.GetComponent<MazeInfo>().SetMapType(GetMapTypeDirection(_z,_x));
-                    // Tresure.GetComponent<MazeInfo>().SetMapUI_Alias(myMapUI);
-                    // Tresure.GetComponent<MazeInfo>().ChangeMapTexture();
+                    Tresure.AddComponent<TresureInfo>();
+                    Tresure.GetComponent<TresureInfo>().SetMapPos(_x,_z);
+                    Tresure.GetComponent<TresureInfo>().SetMapDir(GetMazeDirection(maze,_z,_x));
+                    Tresure.GetComponent<TresureInfo>().SetIntDir(GetMazeDirArray(maze,_z,_x));
+                    Tresure.GetComponent<TresureInfo>().SetMapType(GetMapTypeDirection(_z,_x));
+                    Tresure.GetComponent<TresureInfo>().SetMapUI_Alias(myMapUI);
+                    Tresure.GetComponent<TresureInfo>().ChangeMapSprite();
                 }
                 // arrayvalue += argmaze[x,y];
                 // Debug.Log(argmaze[x,y]);
             }
             // Debug.Log(arrayvalue);       
         }
+    }
+    public Vector3 GetDirectionVector3(int _z,int _x){
+        Vector3 _vector3 = new Vector3(0,0,0);
+        int _dir = GetMazeDirection(Maze,_z,_x);
+        switch(_dir){
+            case 1:
+                _vector3 = new Vector3(0,90f,0);
+                break;
+            case 2:
+                _vector3 = new Vector3(0,0,0);
+                break;
+            case 4:
+                _vector3 = new Vector3(0,270f,0);
+                break;
+            case 8:
+                _vector3 = new Vector3(0,180f,0);
+                break;
+            default:
+                Debug.Log("Tresure Room Entrance Direction err");
+                break;
+        }
+        
+        return _vector3;
     }
     public Quaternion GetTresureDirection(int _z,int _x){
         Quaternion _entrance = new Quaternion();
@@ -159,4 +197,5 @@ public class MazeGenerator : MonoBehaviour
         if(_maze[_z,(_x-1)] != Wall) mazedir[3] = 1;
         return mazedir;
     }
+
 }
