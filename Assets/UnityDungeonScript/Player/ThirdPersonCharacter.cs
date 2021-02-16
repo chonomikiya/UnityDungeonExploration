@@ -1,5 +1,4 @@
 using UnityEngine;
-using DungeonExploration.Maze;
 
 namespace DungeonExploration.Player
 {

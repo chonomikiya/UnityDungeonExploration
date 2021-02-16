@@ -4,6 +4,9 @@ using System.Text;
 using System;
 using UnityEngine;
 
+//https://algoful.com/Archive/Algorithm/MazeDig
+//Algoful様のサイトよりC#の迷路生成アルゴリズム
+
 namespace DungeonExploration.Maze{
     public class MazeDigger
     {

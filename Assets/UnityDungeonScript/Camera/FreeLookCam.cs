@@ -1,9 +1,7 @@
 using System;
 using UnityEngine;
-using UnityStandardAssets.CrossPlatformInput;
 
-
-namespace UnityStandardAssets.Cameras
+namespace DungeonExploration.Cameras
 {
     public class FreeLookCam : PivotBasedCameraRig
     {
@@ -13,6 +11,7 @@ namespace UnityStandardAssets.Cameras
         // 	Camera Rig
         // 		Pivot
         // 			Camera
+        MouseLookCtl m_MouseLookCtl = new MouseLookCtl();
         [SerializeField] private float m_MoveSpeed = 1f;                      // How fast the rig will move to keep up with the target's position.
         [Range(0f, 10f)] [SerializeField] private float m_TurnSpeed = 1.5f;   // How fast the rig will rotate from user input.
         [SerializeField] private float m_TurnSmoothing = 0.0f;                // How much smoothing to apply to the turn input, to reduce mouse-turn jerkiness
@@ -73,8 +72,8 @@ namespace UnityStandardAssets.Cameras
 			return;
 
             // Read the user input
-            var x = CrossPlatformInputManager.GetAxis("Mouse X");
-            var y = CrossPlatformInputManager.GetAxis("Mouse Y");
+            var x = Input.GetAxis("Mouse X");
+            var y = Input.GetAxis("Mouse Y");
 
             // Adjust the look angle by an amount proportional to the turn speed and horizontal input.
             m_LookAngle += x*m_TurnSpeed;
