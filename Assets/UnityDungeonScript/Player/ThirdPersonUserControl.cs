@@ -35,10 +35,8 @@ namespace DungeonExploration.Player
 
         private void Update()
         {
-            if(Input.GetKey(KeyCode.Z)){
-                m_torch = true;
-            }else{
-                m_torch = false;
+            if(Input.GetKeyDown(KeyCode.Z)){
+                m_torch = !m_torch;
             }
             if (!m_Jump)
             {

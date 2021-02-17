@@ -42,6 +42,7 @@ namespace DungeonExploration.Cameras
 
         protected void Update()
         {
+            m_MouseLookCtl.UpdateCursorLock();
             HandleRotationMovement();
             if (m_LockCursor && Input.GetMouseButtonUp(0))
             {
