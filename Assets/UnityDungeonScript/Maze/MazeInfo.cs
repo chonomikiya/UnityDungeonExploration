@@ -15,6 +15,7 @@ namespace DungeonExploration.Maze{
             [SerializeField] Map maptype = Map.Block;
             [SerializeField] int [] intdir = new int [] {0,0,0,0};
             [SerializeField] GameObject myMapUI = null;
+            private bool onMapView = false;
 
             
             // Start is called before the first frame update
@@ -65,6 +66,15 @@ namespace DungeonExploration.Maze{
             }
             public MapUI GetComponentMapUI(){
                 return this.myMapUI.GetComponent<MapUI>();
+            }
+            public void ViewMiniMap(){
+                if(!onMapView){
+                    maprenderer.enabled = true;
+                    onMapView = true;
+                }
+            }
+            public bool GetBoolMapView(){
+                return onMapView;
             }
         }
 }

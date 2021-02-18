@@ -621,7 +621,7 @@ ModelImporter:
     - name: ThumbProximal.L
       parentName: Hand.L
       position: {x: -0.0004634723, y: 0.00046360714, z: 0.00016454395}
-      rotation: {x: 0.26649395, y: -0.5062768, z: 0.2967217, w: 0.7646051}
+      rotation: {x: 0.26649398, y: -0.5062769, z: 0.2967217, w: 0.7646051}
       scale: {x: 1, y: 0.9999999, z: 0.99999994}
     - name: ThumbMiddle.L
       parentName: ThumbProximal.L
@@ -761,7 +761,7 @@ ModelImporter:
     - name: IndexProximal.R
       parentName: Hand.R
       position: {x: -0.0002964688, y: 0.0012218702, z: 0.0002535917}
-      rotation: {x: 0.04860505, y: -0.62972015, z: 0.03001801, w: 0.77471864}
+      rotation: {x: 0.048605043, y: -0.6297202, z: 0.030018006, w: 0.7747187}
       scale: {x: 0.99999994, y: 1.0000001, z: 0.99999994}
     - name: IndexMiddle.R
       parentName: IndexProximal.R
@@ -821,7 +821,7 @@ ModelImporter:
     - name: LittleProximal.R
       parentName: Hand.R
       position: {x: 0.00023131396, y: 0.001039472, z: -0.0002516798}
-      rotation: {x: 0.04466585, y: -0.5325402, z: 0.035615873, w: 0.8444747}
+      rotation: {x: 0.044665843, y: -0.5325402, z: 0.035615865, w: 0.84447473}
       scale: {x: 0.99999994, y: 0.9999998, z: 1}
     - name: LittleMiddle.R
       parentName: LittleProximal.R
@@ -876,7 +876,7 @@ ModelImporter:
     - name: Foot.R
       parentName: LowerLeg.R
       position: {x: 1.5133991e-11, y: 0.0043964125, z: 1.7927959e-10}
-      rotation: {x: -0.3020359, y: 0.6566877, z: -0.6286229, w: -0.28699976}
+      rotation: {x: -0.3020359, y: 0.65668774, z: -0.6286229, w: -0.2869998}
       scale: {x: 0.9999998, y: 0.99999994, z: 1}
     - name: Toe.R
       parentName: Foot.R
@@ -920,11 +920,12 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 14eb8e98a995144bd9ede22c12f9f3be,
+    type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 2
   additionalBone: 0
   userData: 
   assetBundleName: 
