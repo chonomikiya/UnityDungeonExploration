@@ -5,7 +5,10 @@ public class SampleDataBase : MonoBehaviour {
     public SqliteDatabase SqliteDatabase;
     private void Start() {
         SqliteDatabase = new SqliteDatabase("default.db");
-        string query = "SELECT * FROM example";
+        string query = "SELECT name,dummy FROM example";
+        // string query1 = "insert into example values(\"script\",3)";
+        //                                             (\"+ var +\",int);
+        // SqliteDatabase.ExecuteQuery(query1);
         DataTable dt = SqliteDatabase.ExecuteQuery(query);
 
         string name;
