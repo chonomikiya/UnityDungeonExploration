@@ -283,8 +283,11 @@ public class SqliteDatabase
 	private IntPtr Prepare (string query)
 	{
 		IntPtr stmHandle;
-        
-		if (sqlite3_prepare_v2 (_connection, query, query.Length, out stmHandle, IntPtr.Zero) != SQLITE_OK) {
+		//by mikiya
+		//time 23-2-2021
+		//multibyte Adjustment
+		int byteCnt = System.Text.Encoding.GetEncoding("UTF-8").GetByteCount(query);
+		if (sqlite3_prepare_v2 (_connection, query, byteCnt, out stmHandle, IntPtr.Zero) != SQLITE_OK) {
 			IntPtr errorMsg = sqlite3_errmsg (_connection);
 			throw new SqliteException (Marshal.PtrToStringAnsi (errorMsg));
 		}

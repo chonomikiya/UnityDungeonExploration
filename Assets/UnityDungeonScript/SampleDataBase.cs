@@ -10,7 +10,6 @@ public class SampleDataBase : MonoBehaviour {
         //                                             (\"+ var +\",int);
         // SqliteDatabase.ExecuteQuery(query1);
         DataTable dt = SqliteDatabase.ExecuteQuery(query);
-
         string name;
         int dummy;
         foreach(DataRow dr in dt.Rows){
