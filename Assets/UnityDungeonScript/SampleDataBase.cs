@@ -1,5 +1,11 @@
 using UnityEngine;
 using System.Collections.Generic;
+/*
+CREATE TABLE itemtable(id INTEGER primary key,item TEXT,sell INTEGER);
+CREATE TABLE money(total INTEGER);
+CREATE TABLE modifiertable(id INTEGER primary key,modifier TEXT,magnification REAL);
+Englishnoobな自分へ                               ,装飾子        ,倍率
+*/
 
 public class SampleDataBase : MonoBehaviour {
     public SqliteDatabase SqliteDatabase;
