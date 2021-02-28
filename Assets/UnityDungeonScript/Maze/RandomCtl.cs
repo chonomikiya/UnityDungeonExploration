@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
+//面倒だったためC#のParse関数を使用
+//stringをchar配列に変換し、charの要素をint変換するのが主流、要改善
 namespace DungeonExploration.Maze{
     public class RandomCtl 
     {

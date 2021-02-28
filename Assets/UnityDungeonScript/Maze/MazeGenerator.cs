@@ -20,7 +20,7 @@ public class MazeGenerator : MonoBehaviour
     [SerializeField] GameObject PathPrefab = null;
     [SerializeField] GameObject TresurePrefab = null;
     [SerializeField] GameObject myWholeMapCamera = null;
-
+    [SerializeField] GameObject TresureManage = null;
     GameObject MazeGroup = null;
 
 
@@ -62,6 +62,8 @@ public class MazeGenerator : MonoBehaviour
     public void instanceMaze(int [,] maze){
         myWholeMapCamera.GetComponent<wholeMapCamera>().SetWholePos(new Vector3((Width*init0ffset)/2,0,-(Height*init0ffset)/2));
         MazeGroup = new GameObject("empty");
+        //自信がなかったためforeachを使わなかったので可読性が宜しくない
+        //時間があれば要改善
         for(int _z=0;_z<maze.GetLength(1);_z++){
             for(int _x=0;_x<maze.GetLength(0);_x++){
                 if(maze[_z,_x] == Wall){
