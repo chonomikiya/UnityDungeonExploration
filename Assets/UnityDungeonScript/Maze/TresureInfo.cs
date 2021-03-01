@@ -5,11 +5,28 @@ namespace DungeonExploration.Maze{
     public class TresureInfo : MazeInfo {
         SpriteRenderer myicon = null;
         MazeType mymazetype;
+        [SerializeField] int prefix_id,item_id;
+        [SerializeField] string tresurename;
+
         protected override void Awake()
         {
             base.Awake();    
             GetComponentIconSprite();
             mymazetype = MazeType.Tresure;
+        }
+        //ItemとPrefixのId値を格納するの関数を呼び出す
+        public void ItemuIdSet(int _itemid,int _prefixid){
+            SetItemId(_itemid);
+            SetPrefixId(_prefixid);
+        }
+        public void SetItemId(int _itemId){
+            this.item_id = _itemId;
+        }
+        public void SetPrefixId(int _prefixId){
+            this.prefix_id = _prefixId;
+        }
+        public void SetTresureItem(string _tresure){
+            this.tresurename = _tresure;
         }
         public override void SetMapSprite(Sprite _sprite)
         {

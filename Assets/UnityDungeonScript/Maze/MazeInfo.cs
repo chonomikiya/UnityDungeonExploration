@@ -7,7 +7,6 @@ namespace DungeonExploration.Maze{
     [RequireComponent(typeof(Sprite))]
     public class MazeInfo : MonoBehaviour
         {
-            [SerializeField] Sprite minimap =null;
             [SerializeField] SpriteRenderer maprenderer = null;
             [SerializeField] int xpos,zpos;
             [SerializeField] int dir;

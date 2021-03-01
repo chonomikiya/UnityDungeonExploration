@@ -8,7 +8,7 @@ using System;
     
 public class MazeGenerator : MonoBehaviour
 {
-    [SerializeField] int Width = 15,Height = 15;
+    [SerializeField] int Width = 11,Height = 11;
 
     RandomCtl myRandomCtl = new RandomCtl();
     MazeDigger myMazeDigger;
@@ -86,18 +86,6 @@ public class MazeGenerator : MonoBehaviour
                     Path.GetComponent<MazeInfo>().ChangeMapSprite();
                 }
                 if((maze[_z,_x]) == Tresure){
-                    // GameObject Tresure = Instantiate(TresurePrefab,new Vector3(_x*init0ffset,0,-_z*init0ffset),Quaternion.identity) as GameObject;
-                    // Tresure.name = (_z + "+" + _x + "Tresure");
-                    // Tresure.transform.parent = MazeGroup.transform;
-                    // Tresure.AddComponent<MazeInfo>();
-                    // Tresure.GetComponent<MazeInfo>().SetMapPos(_x,_z);
-                    // Tresure.GetComponent<MazeInfo>().SetMapDir(GetMazeDirection(maze,_z,_x));
-                    // Tresure.GetComponent<MazeInfo>().SetIntDir(GetMazeDirArray(maze,_z,_x));
-                    // Tresure.GetComponent<MazeInfo>().SetMapType(GetMapTypeDirection(_z,_x));
-                    // Tresure.GetComponent<MazeInfo>().SetMapUI_Alias(myMapUI);
-                    // Tresure.GetComponent<MazeInfo>().ChangeMapSprite();
-                    // Tresure.transform.rotation = GetTresureDirection(_z,_x);
-                    //Mapの画像が回転でズレてしまうため一旦commentout
                     GameObject Tresure = Instantiate(TresurePrefab,new Vector3(_x*init0ffset,0,-_z*init0ffset),GetTresureDirection(_z,_x)) as GameObject;
                     Tresure.name = (_z + "+" + _x + "Tresure");
                     Tresure.transform.parent = MazeGroup.transform;

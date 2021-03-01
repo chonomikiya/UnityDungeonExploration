@@ -19,9 +19,50 @@ public class LookContentsOfDatabase : MonoBehaviour
 {
     System.Random myrandom;
     SqliteDatabase sqlitedatabase;
+    int [] item_id,prefix_id;
 
     private void Awake() {
+        SetRandomAlias(new System.Random(1234));
         sqlitedatabase = new SqliteDatabase("default.db");
+        SetItemId();
+        SetPrefixId();
+        Debug.Log(GetRandomItemId());
+        Debug.Log(GetRandoomPrefixId());
+    }
+    //itemIDの初期化
+    public void SetItemId(){
+        string id = "id";
+        string itemtable = "itemtable";
+        // DataTable dt = SqliteDatabase.ExecuteQuery("SELECT id FROM itemtable");
+        DataTable dt = GetSqlSelectTable(id,itemtable);
+        int count = dt.Rows.Count; 
+        this.item_id = new int [count];
+        for (int i=0;i<dt.Rows.Count;i++){
+            DataRow dr = dt.Rows[i];
+            item_id[i] = (int)dr[id];
+        }
+    }
+    //prefixIDの初期化
+    public void SetPrefixId(){
+        string id = "id";
+        string prefixtable = "prefixtable";
+        // DataTable dt = SqliteDatabase.ExecuteQuery("SELECT id FROM itemtable");
+        DataTable dt = GetSqlSelectTable(id,prefixtable);
+        int count = dt.Rows.Count; 
+        this.prefix_id = new int [count];
+        for (int i=0;i<dt.Rows.Count;i++){
+            DataRow dr = dt.Rows[i];
+            prefix_id[i] = (int)dr[id];
+        }
+    }
+    public int GetRandomItemId(){
+        int _element = myrandom.Next(item_id.Length);
+        return item_id[_element];
+    }
+    
+    public int GetRandoomPrefixId(){
+        int _element = myrandom.Next(prefix_id.Length);
+        return prefix_id[_element];
     }
     
     public void GetItemtableId(){
@@ -43,9 +84,6 @@ public class LookContentsOfDatabase : MonoBehaviour
             Debug.Log("RandomValue = "+rndvalue);
             Debug.Log(array[rndvalue]);
         }
-        // foreach(DataRow dr in dt.Rows){
-        //      Debug.Log(dr["id"]);
-        // }
     }
 
     public DataTable GetSqlSelectTable(string _column,string _itemtable){
