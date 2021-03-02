@@ -24,7 +24,7 @@ public class MazeGenerator : MonoBehaviour
     GameObject MazeGroup = null;
 
 
-    const int Wall = 1,Path = 0,Tresure = 2;
+    const int Wall = 1,Path = 0,Tresure = 2,Entrance = 3;
 
     // Start is called before the first frame update
     void Start(){}
@@ -60,10 +60,11 @@ public class MazeGenerator : MonoBehaviour
     }
     //intの配列からmazeを起こす
     public void instanceMaze(int [,] maze){
+        TresureManage.GetComponent<LookTableContents>().SetRandomAlias(myRandomCtl.GetRandom());
+        TresureManage.GetComponent<LookTableContents>().InitTableContentsCount();
         myWholeMapCamera.GetComponent<wholeMapCamera>().SetWholePos(new Vector3((Width*init0ffset)/2,0,-(Height*init0ffset)/2));
         MazeGroup = new GameObject("empty");
-        //自信がなかったためforeachを使わなかったので可読性が宜しくない
-        //時間があれば要改善
+        //自信がなかったためforeachを使わなかったので可読性が宜しくない,要改善
         for(int _z=0;_z<maze.GetLength(1);_z++){
             for(int _x=0;_x<maze.GetLength(0);_x++){
                 if(maze[_z,_x] == Wall){
@@ -96,6 +97,8 @@ public class MazeGenerator : MonoBehaviour
                     Tresure.GetComponent<TresureInfo>().SetMapType(GetMapTypeDirection(_z,_x));
                     Tresure.GetComponent<TresureInfo>().SetMapUI_Alias(myMapUI);
                     Tresure.GetComponent<TresureInfo>().ChangeMapSprite();
+                    Tresure.GetComponent<TresureInfo>().SetTresureList(TresureManage.GetComponent<LookTableContents>().GetItemTableForList());
+                    // Tresure.GetComponent<TresureInfo>().SetTresureDataRow(TresureManage.GetComponent<LookTableContents().GetItemDataRow());
                 }
                 // arrayvalue += argmaze[x,y];
                 // Debug.Log(argmaze[x,y]);

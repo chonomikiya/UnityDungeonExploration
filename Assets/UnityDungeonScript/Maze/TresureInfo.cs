@@ -1,18 +1,34 @@
 using UnityEngine;
-
+using System;
+using System.Collections.Generic;
 
 namespace DungeonExploration.Maze{
     public class TresureInfo : MazeInfo {
         SpriteRenderer myicon = null;
         MazeType mymazetype;
+        List<DataRow> tresure;
         [SerializeField] int prefix_id,item_id;
         [SerializeField] string tresurename;
+        [SerializeField] int myid;
+        [SerializeField] string myitem;
+        [SerializeField] int mysell;
 
         protected override void Awake()
         {
             base.Awake();    
             GetComponentIconSprite();
             mymazetype = MazeType.Tresure;
+        }
+        public void SetTresureList(List<DataRow> _mlist){
+            this.tresure = _mlist;
+            ListToParse();
+        }
+        public void ListToParse(){
+            foreach(DataRow dr in tresure){
+                myid = (int)dr["id"];
+                myitem = dr["item"].ToString();
+                mysell = (int)dr["sell"];
+            }
         }
         //ItemとPrefixのId値を格納するの関数を呼び出す
         public void ItemuIdSet(int _itemid,int _prefixid){

@@ -1519,7 +1519,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1223443988}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d66415958125ed177ac9dcb22a21bc0c, type: 3}
+  m_Script: {fileID: 11500000, guid: b2673c9ea756048cf86b9a2bd4c3a5e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1223443990
@@ -2520,8 +2520,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b97995eae5aac4f2eae03c7049b2b0fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Width: 19
-  Height: 19
+  Width: 13
+  Height: 13
   init0ffset: 10
   myMapUI: {fileID: 687585338}
   WallPrefab: {fileID: 4479607440520196038, guid: d694a327510aa44b394811090870e91a,
