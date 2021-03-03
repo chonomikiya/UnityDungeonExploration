@@ -17,6 +17,7 @@ CREATE TABLE user_possession(id INTEGER PRYMARY KEY, item TEXT,sell INTEGER);
 English noobな自分へ                       prefix,接頭辞      magnification,倍率
 */
 //SQLiteで色々扱う為のクラス、必要があれば別のものを用意する
+
 public class LookTableContents : MonoBehaviour
 {
     System.Random myrandom;
@@ -44,6 +45,7 @@ public class LookTableContents : MonoBehaviour
 
     //今はItemTableのみでTresureをセットする
     //後からPrefixとmagnification
+    //03/03 何度もDBに問いかけるのではなく一旦全部DataTableの変数に全部取り出して後から加工して使うのがいいかも
     public List<DataRow> GetItemTableForList(){
         DataTable dt = GetSqlSelectTable("id ,item ,sell","itemtable","id = "+GetRandomItemId());
         List<DataRow> mylist =dt.Rows;
