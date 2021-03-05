@@ -24,7 +24,6 @@ namespace DungeonExploration.Maze{
         public void InitRandom(){
             
             int result;
-            
             bool isParsed = Int32.TryParse(seed, out result);
             if(isParsed){
                 myRandom = new System.Random(result);
