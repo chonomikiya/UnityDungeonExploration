@@ -18,7 +18,7 @@ public class InputCanvasCtl : MonoBehaviour
         inputtext = inputField.text;
         int result;
         if(CheckSeedValueBeUse(inputtext) && Int32.TryParse(inputtext , out result)){
-
+            Debug.Log(true);
         }
 
         // ParseStringToInt(inputtext);
@@ -31,7 +31,7 @@ public class InputCanvasCtl : MonoBehaviour
         }
         return _isparse;
     }
-    
+    //すでにStringToIntはすでにC#でできるのでコメントアウト
     // public int ParseStringToInt(string _text){
         
     //     int result;

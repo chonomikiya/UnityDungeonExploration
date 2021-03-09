@@ -20,7 +20,7 @@ TagManager:
   - Player
   - Dungeon
   - DungeonRoot
-  - 
+  - InvisibleLayer
   - 
   - 
   - 
@@ -43,4 +43,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 825080119
+    locked: 0
+  - name: InvisibleLayer
+    uniqueID: 2036324149
     locked: 0
