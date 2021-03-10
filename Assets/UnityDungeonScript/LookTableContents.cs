@@ -14,10 +14,11 @@ CREATE TABLE sqlite_sequence(name,seq);
 CREATE TABLE prefixtable(id INTEGER PRIMARY KEY,prefix TEXT,magnification REAL);
 CREATE TABLE user_possession(id INTEGER PRYMARY KEY, item TEXT,sell INTEGER);
 
-English noobな自分へ                       prefix,接頭辞      magnification,倍率
+English noobな自分へ
+prefix,接頭辞   magnification,倍率
 */
 //SQLiteで色々扱う為のクラス、必要があれば別のものを用意する
-
+//itemtableとかは使う箇所が限られてるので別クラスに分けるべき、最初に想定した使い方離れている
 public class LookTableContents : MonoBehaviour
 {
     System.Random myrandom;
