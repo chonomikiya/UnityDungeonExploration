@@ -15,13 +15,19 @@ public class InputCanvasCtl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+    }
+    public void ColledToComplet(){
         inputtext = inputField.text;
         int result;
-        if(CheckSeedValueBeUse(inputtext) && Int32.TryParse(inputtext , out result)){
-            Debug.Log(true);
-        }
+        SeedDeliver seeddeliver = new SeedDeliver();
 
-        // ParseStringToInt(inputtext);
+        if(CheckSeedValueBeUse(inputtext) && Int32.TryParse(inputtext , out result)){
+            seeddeliver.SetSeed(result);
+            Debug.Log(seeddeliver.GetSeed());
+        }else{
+            seeddeliver.SetSeed();
+            Debug.Log(seeddeliver.GetSeed());
+        }
     }
     //入力をSeedへ格納できるかcheck
     public bool CheckSeedValueBeUse(string _text){

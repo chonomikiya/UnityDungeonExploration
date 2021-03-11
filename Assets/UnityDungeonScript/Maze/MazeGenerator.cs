@@ -27,7 +27,9 @@ public class MazeGenerator : MonoBehaviour
     const int Wall = 1,Path = 0,Tresure = 2,Entrance = 3;
 
     // Start is called before the first frame update
-    void Start(){}
+    void Start(){
+        
+    }
     // Update is called once per frame
     void Update()
     {

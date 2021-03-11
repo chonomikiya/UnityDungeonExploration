@@ -3,14 +3,17 @@ using System.Collections.Generic;
 
 public class SeedDeliver
 {
-    static int Seed;
-    public static void SetSeed(int _src){
+    private static int Seed;
+    public void SetSeed(int _src){
         Seed = _src;
     }
-    public static void SetSeed(){
+    public void SetSeed(){
         Seed = new System.Random().Next(0,999999);
     }
-    public static int GetSeed(){
+    public int GetSeed(){
+        
         return Seed;
+    }
+    public void DeleteSeed(){
     }
 }
