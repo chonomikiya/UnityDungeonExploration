@@ -23,6 +23,7 @@ public class MazeGenerator : MonoBehaviour
     [SerializeField] GameObject myWholeMapCamera = null;
     [SerializeField] GameObject TresureManage = null;
     [SerializeField] GameObject Player = null;
+    [SerializeField] GameObject CameraRig = null;
     GameObject MazeGroup = null;
 
 
@@ -88,6 +89,7 @@ public class MazeGenerator : MonoBehaviour
                     Path.GetComponent<MazeInfo>().ChangeMapSprite();
                     if(maze[_z,_x] == ENTRANCE){
                         this.Player.transform.position = Path.transform.position;
+                        this.CameraRig.transform.position =Path.transform.position;
                     }
                 }
                 if((maze[_z,_x]) == TRESURE){
