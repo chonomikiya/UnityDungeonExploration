@@ -14,22 +14,11 @@ namespace DungeonExploration.Maze{
             [SerializeField] Map maptype = Map.Block;
             [SerializeField] int [] intdir = new int [] {0,0,0,0};
             [SerializeField] GameObject myMapUI = null;
+            MazeType myMazeType;
             private bool onMapView = false;
 
-            
-            // Start is called before the first frame update
-            void Start()
-            {
-                
-            }
             virtual protected void Awake() {
                 GetComponentMapSprite();
-            }
-            
-            // Update is called once per frame
-            void Update()
-            {
-                
             }
             protected void GetComponentMapSprite(){
                 this.maprenderer = this.transform.GetChild(0).GetComponent<SpriteRenderer>();
@@ -45,18 +34,22 @@ namespace DungeonExploration.Maze{
             public void SetIntDir(int[] _mazedir){
                 this.intdir = _mazedir;
             }
-            public Map GetMapType(){
+            public Map GetMapRoad(){
                 return maptype;
             }
-            public void SetMapType(Map _map){
+            public void SetMapRoad(Map _map){
                 this.maptype = _map;
+            }
+            public void SetMazeType(MazeType _type){
+                this.myMazeType = _type;
+            }
+            public MazeType GetMazeType(){
+                return this.myMazeType;
             }
             virtual public void SetMapSprite(Sprite _sprite){
                 this.maprenderer.sprite = _sprite;
             }
-            // virtual public void SetMapSprite(){
-            //     this.maprenderer.sprite = this.myMapUI.GetComponent<MapUI>().GetMapSprite(GetMapType());
-            // }
+
             virtual public void ChangeMapSprite(){
                 SetMapSprite(GetComponentMapUI().GetMapSprite(maptype));
             }

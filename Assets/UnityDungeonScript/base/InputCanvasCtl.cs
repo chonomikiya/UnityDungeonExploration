@@ -11,7 +11,6 @@ public class InputCanvasCtl : MonoBehaviour
     [SerializeField] InputField inputField = null;   
     [SerializeField] string inputtext; 
     const int TEXT_MAX_LENGTH = 6;
-    bool isparse  = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -85,15 +84,6 @@ public class InputCanvasCtl : MonoBehaviour
     //     }
     //     return isjudge;
     // }
-    public int CharToInt(char _befor){
-        int i = 0;
-       switch (_befor){
-            case '1':
-                Debug.Log(_befor);
-                break;
-       } 
-        return i;
-    }
     public void OnExitSeedInputUi(){
         Destroy(this.transform.root.gameObject);
     }

@@ -19,35 +19,33 @@ public class MazeGenerator : MonoBehaviour
     [SerializeField] GameObject WallPrefab = null;
     [SerializeField] GameObject PathPrefab = null;
     [SerializeField] GameObject TresurePrefab = null;
+    [SerializeField] GameObject DoorPrefab = null;
     [SerializeField] GameObject myWholeMapCamera = null;
     [SerializeField] GameObject TresureManage = null;
+    [SerializeField] GameObject Player = null;
     GameObject MazeGroup = null;
 
 
-    const int Wall = 1,Path = 0,Tresure = 2,Entrance = 3;
+    const int WALL = 1,PATH = 0,TRESURE = 2,ENTRANCE = 3,DOOR = 4;
 
     // Start is called before the first frame update
     void Start(){
-        
+        SeedDeliver seeddeliver = new SeedDeliver();
+        myRandomCtl.InitRandom(seeddeliver.GetSeed());
+        MazeGenerate();
     }
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space)){
-            
-            myRandomCtl.InitRandom();
-            myMazeDigger = new MazeDigger(Width,Height);
-            myMazeDigger.InitMazeSeed(myRandomCtl.GetRandom());
-            Maze = myMazeDigger.CreateMaze();
-            instanceMaze(Maze);
-        }
-        if(Input.GetKeyDown(KeyCode.E)){
-            DeleteMaze();    
-        }
-        // if(Input.GetKeyDown(KeyCode.T)){
-        //     GameObject test = Instantiate(PathPrefab);
-        //     test.AddComponent<MazeInfo>();
+        // if(Input.GetKeyDown(KeyCode.E)){
+        //     DeleteMaze();    
         // }
+    }
+    public void MazeGenerate(){
+        myMazeDigger = new MazeDigger(Width,Height);
+        myMazeDigger.InitMazeSeed(myRandomCtl.GetRandom());
+        Maze = myMazeDigger.CreateMaze();
+        instanceMaze(Maze);
     }
     void DeleteMaze(){
         if( MazeGroup != null){
@@ -69,14 +67,14 @@ public class MazeGenerator : MonoBehaviour
         //自信がなかったためforeachを使わなかったので可読性が宜しくない,要改善
         for(int _z=0;_z<maze.GetLength(1);_z++){
             for(int _x=0;_x<maze.GetLength(0);_x++){
-                if(maze[_z,_x] == Wall){
+                if(maze[_z,_x] == WALL){
                     GameObject Cube = Instantiate(WallPrefab,new Vector3(_x*init0ffset,0,-_z*init0ffset),Quaternion.identity) as GameObject;
                     Cube.name = (_z + "+" + _x + "Wall"); 
                     Cube.transform.parent = MazeGroup.transform;
                     Cube.AddComponent<MazeInfo>();
                     Cube.GetComponent<MazeInfo>().SetMapPos(_x,_z);
                 }
-                if(maze[_z,_x] == Path){
+                if((maze[_z,_x] == PATH )||(maze[_z,_x] == ENTRANCE) ){
                     GameObject Path = Instantiate(PathPrefab,new Vector3(_x*init0ffset,0,-_z*init0ffset),Quaternion.identity) as GameObject;
                     Path.name = (_z + "+" + _x + "Path");
                     Path.transform.parent = MazeGroup.transform;
@@ -84,11 +82,15 @@ public class MazeGenerator : MonoBehaviour
                     Path.GetComponent<MazeInfo>().SetMapPos(_x,_z);
                     Path.GetComponent<MazeInfo>().SetMapDir(GetMazeDirection(maze ,_z,_x));
                     Path.GetComponent<MazeInfo>().SetIntDir(GetMazeDirArray(maze,_z,_x));
-                    Path.GetComponent<MazeInfo>().SetMapType(GetMapTypeDirection(_z,_x));
+                    Path.GetComponent<MazeInfo>().SetMapRoad(GetMapTypeDirection(_z,_x));
                     Path.GetComponent<MazeInfo>().SetMapUI_Alias(myMapUI);
+                    Path.GetComponent<MazeInfo>().SetMazeType(CheckMazeType(_z,_x));
                     Path.GetComponent<MazeInfo>().ChangeMapSprite();
+                    if(maze[_z,_x] == ENTRANCE){
+                        this.Player.transform.position = Path.transform.position;
+                    }
                 }
-                if((maze[_z,_x]) == Tresure){
+                if((maze[_z,_x]) == TRESURE){
                     GameObject Tresure = Instantiate(TresurePrefab,new Vector3(_x*init0ffset,0,-_z*init0ffset),GetTresureDirection(_z,_x)) as GameObject;
                     Tresure.name = (_z + "+" + _x + "Tresure");
                     Tresure.transform.parent = MazeGroup.transform;
@@ -96,16 +98,28 @@ public class MazeGenerator : MonoBehaviour
                     Tresure.GetComponent<TresureInfo>().SetMapPos(_x,_z);
                     Tresure.GetComponent<TresureInfo>().SetMapDir(GetMazeDirection(maze,_z,_x));
                     Tresure.GetComponent<TresureInfo>().SetIntDir(GetMazeDirArray(maze,_z,_x));
-                    Tresure.GetComponent<TresureInfo>().SetMapType(GetMapTypeDirection(_z,_x));
+                    Tresure.GetComponent<TresureInfo>().SetMapRoad(GetMapTypeDirection(_z,_x));
                     Tresure.GetComponent<TresureInfo>().SetMapUI_Alias(myMapUI);
+                    Tresure.GetComponent<TresureInfo>().SetMazeType(CheckMazeType(_z,_x));
                     Tresure.GetComponent<TresureInfo>().ChangeMapSprite();
                     Tresure.GetComponent<TresureInfo>().SetTresureList(TresureManage.GetComponent<LookTableContents>().GetItemTableForList());
-                    // Tresure.GetComponent<TresureInfo>().SetTresureDataRow(TresureManage.GetComponent<LookTableContents().GetItemDataRow());
+
+                }
+                if(maze[_z,_x]== DOOR){
+                    GameObject Tresure = Instantiate(DoorPrefab,new Vector3(_x*init0ffset,0,-_z*init0ffset),GetTresureDirection(_z,_x)) as GameObject;
+                    Tresure.name = (_z + "+" + _x + "Door");
+                    Tresure.transform.parent = MazeGroup.transform;
+                    Tresure.AddComponent<TresureInfo>();
+                    Tresure.GetComponent<TresureInfo>().SetMapPos(_x,_z);
+                    Tresure.GetComponent<TresureInfo>().SetMapDir(GetMazeDirection(maze,_z,_x));
+                    Tresure.GetComponent<TresureInfo>().SetIntDir(GetMazeDirArray(maze,_z,_x));
+                    Tresure.GetComponent<TresureInfo>().SetMapRoad(GetMapTypeDirection(_z,_x));
+                    Tresure.GetComponent<TresureInfo>().SetMapUI_Alias(myMapUI);
+                    Tresure.GetComponent<TresureInfo>().SetMazeType(CheckMazeType(_z,_x));
+                    Tresure.GetComponent<TresureInfo>().ChangeMapSprite();
                 }
                 // arrayvalue += argmaze[x,y];
-                // Debug.Log(argmaze[x,y]);
             }
-            // Debug.Log(arrayvalue);       
         }
     }
     public Vector3 GetDirectionVector3(int _z,int _x){
@@ -128,7 +142,6 @@ public class MazeGenerator : MonoBehaviour
                 Debug.Log("Tresure Room Entrance Direction err");
                 break;
         }
-        
         return _vector3;
     }
     public Quaternion GetTresureDirection(int _z,int _x){
@@ -156,25 +169,25 @@ public class MazeGenerator : MonoBehaviour
     public Map GetMapTypeDirection(int _z,int _x){
         Map _map = Map.Block;
         //up dir
-        if(Maze[(_z-1),_x] != Wall) _map = _map |Map.N;
+        if(Maze[(_z-1),_x] != WALL) _map = _map |Map.N;
         //right dir 
-        if(Maze[_z,(_x+1)] != Wall) _map = _map|Map.E;
+        if(Maze[_z,(_x+1)] != WALL) _map = _map|Map.E;
         //down dir
-        if(Maze[(_z+1),_x] != Wall) _map = _map | Map.S;
+        if(Maze[(_z+1),_x] != WALL) _map = _map | Map.S;
         //left dir
-        if(Maze[_z,(_x-1)] != Wall) _map = _map| Map.W;
+        if(Maze[_z,(_x-1)] != WALL) _map = _map| Map.W;
         return _map;
     }
     public int GetMazeDirection(int [,] _maze ,int _z,int _x){
         int  mymap = 0;
         //up dir
-        if(_maze[(_z-1),_x] != Wall) mymap += 8;
+        if(_maze[(_z-1),_x] != WALL) mymap += 8;
         //right dir 
-        if(_maze[_z,(_x+1)] != Wall) mymap += 4;
+        if(_maze[_z,(_x+1)] != WALL) mymap += 4;
         //down dir
-        if(_maze[(_z+1),_x] != Wall) mymap += 2;
+        if(_maze[(_z+1),_x] != WALL) mymap += 2;
         //left dir
-        if(_maze[_z,(_x-1)] != Wall) mymap += 1;
+        if(_maze[_z,(_x-1)] != WALL) mymap += 1;
         
         return mymap;
     }
@@ -183,14 +196,38 @@ public class MazeGenerator : MonoBehaviour
     public int [] GetMazeDirArray(int[,] _maze,int _z,int _x){
         int [] mazedir = new int [] {0,0,0,0};
         //up dir
-        if(_maze[(_z-1),_x] != Wall) mazedir[0] = 1;
+        if(_maze[(_z-1),_x] != WALL) mazedir[0] = 1;
         //right dir 
-        if(_maze[_z,(_x+1)] != Wall) mazedir[1] = 1;
+        if(_maze[_z,(_x+1)] != WALL) mazedir[1] = 1;
         //down dir
-        if(_maze[(_z+1),_x] != Wall) mazedir[2] = 1;
+        if(_maze[(_z+1),_x] != WALL) mazedir[2] = 1;
         //left dir
-        if(_maze[_z,(_x-1)] != Wall) mazedir[3] = 1;
+        if(_maze[_z,(_x-1)] != WALL) mazedir[3] = 1;
         return mazedir;
+    }
+    public MazeType CheckMazeType(int _z,int _x){
+        MazeType _type = new MazeType();
+        switch(Maze[_z,_x]){
+            case WALL:
+                _type = MazeType.Wall;
+                break;
+            case PATH:
+                _type = MazeType.Path;
+                break;
+            case TRESURE:
+                _type = MazeType.Tresure;
+                break;
+            case ENTRANCE:
+                _type = MazeType.Entrance;
+                break;
+            case DOOR:
+                _type = MazeType.Door;
+                break;
+            default:
+                Debug.Log("MazeType Check Err");
+                break;
+            }
+        return _type;
     }
 
 }

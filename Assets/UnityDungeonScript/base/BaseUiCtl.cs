@@ -12,16 +12,14 @@ public class BaseUiCtl : MonoBehaviour
     [SerializeField] Text money_ui = null;
     GameObject seed_input_ui = null;    
     LookTableContents myLookTableContents;
-    bool isSeedInput = false;
+    bool isSeedInputFlg = false;
     // const int LAYER_INVISIBLE = 12,LAYER_UI = 5;
     
     // Start is called before the first frame update
     void Start()
     {
         myLookTableContents = this.GetComponent<LookTableContents>();
-        // m_sqldatabase = new SqliteDatabase("default.db");
         OnViewMoneyUI();
-        // SeedDeliver seeddeliver = new SeedDeliver();
     }
 
     // Update is called once per frame
@@ -30,14 +28,18 @@ public class BaseUiCtl : MonoBehaviour
         
     }
     public void OnNextSceneButton(){
-        if(isSeedInput){
+        if(isSeedInputFlg){
             SceneManager.LoadScene("playgame");
         }
+    }
+    public void InputDone(){
+        this.isSeedInputFlg = true;
     }
     //上にUIを重ねる場合、上層下層にボタンがあると被って見辛くなるのでけしたがいいやも
     public void OnCreateSeedInputUi(){
         seed_input_ui = Instantiate(input_ui_prefab ) as GameObject;
         seed_input_ui.GetComponentInChildren<Button>().onClick.AddListener(OnExitButtonDestory);
+        seed_input_ui.GetComponentInChildren<Button>().onClick.AddListener(InputDone);
         InvisibleButtonUI();
     }
     public void OnExitButtonDestory(){
@@ -78,7 +80,7 @@ public class BaseUiCtl : MonoBehaviour
         string str_money =string.Format("{0:#,0}",_money);
         money_ui.text =str_money;
     }
-    public void SetIsSeedInput(bool _judge){
-        this.isSeedInput = _judge;
-    }
+    // public void SetIsSeedInput(bool _judge){
+    //     this.isSeedInputFlg = _judge;
+    // }
 }

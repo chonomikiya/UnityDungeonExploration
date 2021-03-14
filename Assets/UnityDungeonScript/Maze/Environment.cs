@@ -25,6 +25,7 @@ namespace DungeonExploration.Maze{
         Path = 0,
         Wall = 1,
         Tresure = 2,
-        Gateway = 3,
+        Entrance = 3,
+        Door = 4
     }
 }

@@ -17,6 +17,10 @@ namespace DungeonExploration.Maze{
         private int randomSeed;
         public int GetRndSeed(){return randomSeed;}
         public void SetRndSeed(int value){randomSeed = value;}
+        public void InitRandom(int val){
+            SetRndSeed(val);
+            myRandom = new System.Random(val);
+        }
          
 
         //seedが数字のみなら引数にしてRndomを初期化

@@ -5,7 +5,6 @@ using System.Collections.Generic;
 namespace DungeonExploration.Maze{
     public class TresureInfo : MazeInfo {
         SpriteRenderer myicon = null;
-        MazeType mymazetype;
         List<DataRow> tresure;
         [SerializeField] int prefix_id,item_id;
         [SerializeField] string tresurename;
@@ -17,7 +16,6 @@ namespace DungeonExploration.Maze{
         {
             base.Awake();    
             GetComponentIconSprite();
-            mymazetype = MazeType.Tresure;
         }
         public void SetTresureList(List<DataRow> _mlist){
             this.tresure = _mlist;
@@ -62,8 +60,9 @@ namespace DungeonExploration.Maze{
         public override void ChangeMapSprite(){
             //Tresureの部屋はQuaternionで向きを操作しているかつ入口が一つな為miniMapの画像は北で固定
             SetMapSprite(GetComponentMapUI().GetMapSprite(Map.S));
-            SetIcon(base.GetComponentMapUI().GetIcon(mymazetype));
+            SetIcon(base.GetComponentMapUI().GetIcon(GetMazeType()));
             LookWorldRotation_South(myicon.gameObject);
         }
+        
     }
 }

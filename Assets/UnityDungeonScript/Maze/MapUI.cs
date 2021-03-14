@@ -6,8 +6,7 @@ using UnityEngine.UI;
 namespace DungeonExploration.Maze{
     public class MapUI : MonoBehaviour {
         [SerializeField] Sprite N,E,S,W,NE,NES,NESW,NEW,NS,NSW,NW,ES,ESW,EW,SW,Block;
-        [SerializeField] Sprite icon_tresure,icon_gateway;
-        [SerializeField] Image mImage;
+        [SerializeField] Sprite icon_tresure,icon_door;
         private void Start() {
             
         }
@@ -19,6 +18,9 @@ namespace DungeonExploration.Maze{
             switch(_mazetype){
                 case MazeType.Tresure:
                     _icon = icon_tresure;
+                    break;
+                case MazeType.Door:
+                    _icon = icon_door;
                     break;
                 default:
                     Debug.Log("MapUI.GetIcon() switch(mazetype) err");

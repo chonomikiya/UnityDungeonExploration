@@ -15,7 +15,8 @@ namespace DungeonExploration.Maze{
             private int[,] Maze;
             private int Width { get; set; }
             private int Height { get; set; }
-            private System.Random myrnd = new System.Random(1234);
+            private bool door_install = false;
+            private System.Random myrnd;
 
             // 穴掘り開始候補座標
             private List<Cell> StartCells;
@@ -45,17 +46,19 @@ namespace DungeonExploration.Maze{
                     {
                         if (x == 0 || y == 0 || x == this.Width - 1 || y == this.Height - 1)
                         {
-                            Maze[x, y] = Path;  // 外壁は判定の為通路にしておく(最後に戻す)
+                            Maze[x, y] = PATH;  // 外壁は判定の為通路にしておく(最後に戻す)
                         }
                         else
                         {
-                            Maze[x, y] = Wall;
+                            Maze[x, y] = WALL;
                         }
                     }
                 }
-
+                Cell mazestart = new Cell();
+                mazestart.X = (myrnd.Next(Width/2)*2)+1;
+                mazestart.Y = (myrnd.Next(Height/2)*2)+1;                
                 // 穴掘り開始
-                this.Dig(1, 1);
+                this.Dig(mazestart.X, mazestart.Y);
 
                 // 外壁を戻す
                 for (int y = 0; y < this.Height; y++)
@@ -64,7 +67,10 @@ namespace DungeonExploration.Maze{
                     {
                         if (x == 0 || y == 0 || x == this.Width - 1 || y == this.Height - 1)
                         {
-                            Maze[x, y] = Wall;
+                            Maze[x, y] = WALL;
+                        }
+                        if(x == mazestart.X && y == mazestart.Y){
+                            Maze[x,y] = START;
                         }
                     }
                 }
@@ -76,21 +82,25 @@ namespace DungeonExploration.Maze{
             {
                 // 指定座標から掘れなくなるまで堀り続ける
                 //default var rnd = new Random();
-
+                int count = 0;
                 var rnd = this.myrnd;
                 while (true)
                 {
+                    count++;
                     // 掘り進めることができる方向のリストを作成
                     var directions = new List<Direction>();
-                    if (this.Maze[x, y - 1] == Wall && this.Maze[x, y - 2] == Wall)
+                    if (this.Maze[x, y - 1] == WALL && this.Maze[x, y - 2] == WALL)
                         directions.Add(Direction.Up);
-                    if (this.Maze[x + 1, y] == Wall && this.Maze[x + 2, y] == Wall)
+                    if (this.Maze[x + 1, y] == WALL && this.Maze[x + 2, y] == WALL)
                         directions.Add(Direction.Right);
-                    if (this.Maze[x, y + 1] == Wall && this.Maze[x, y + 2] == Wall)
+                    if (this.Maze[x, y + 1] == WALL && this.Maze[x, y + 2] == WALL)
                         directions.Add(Direction.Down);
-                    if (this.Maze[x - 1, y] == Wall && this.Maze[x - 2, y] == Wall)
+                    if (this.Maze[x - 1, y] == WALL && this.Maze[x - 2, y] == WALL)
                         directions.Add(Direction.Left);
-
+                    //カウンタがしきい値を超えた時、周りに繋げられる壁があったら繋げる
+                    if (count>threshold && ConnectPath(x,y)){
+                        count = 0;
+                    }
                     // 掘り進められない場合、ループを抜ける
                     if (directions.Count == 0) break;
 
@@ -130,23 +140,62 @@ namespace DungeonExploration.Maze{
                     Dig(cell.X, cell.Y);
                 }
             }
+            bool ConnectPath(int _x,int _y){
+                bool connected = false;
+                List<Direction> mydirection = new List<Direction>();
+                if (this.Maze[_x, _y - 1] == WALL && this.Maze[_x, _y - 2] == PATH)
+                    mydirection.Add(Direction.Up);
+                if (this.Maze[_x + 1, _y] == WALL && this.Maze[_x + 2, _y] == PATH)
+                    mydirection.Add(Direction.Right);
+                if (this.Maze[_x, _y + 1] == WALL && this.Maze[_x, _y + 2] == PATH)
+                    mydirection.Add(Direction.Down);
+                if (this.Maze[_x - 1, _y] == WALL && this.Maze[_x - 2, _y] == PATH)
+                    mydirection.Add(Direction.Left);
+                if(mydirection.Count != 0){
+                    int dirindex = myrnd.Next(mydirection.Count);
+                    connected = true;
+                    switch(mydirection[dirindex]){
+                        case Direction.Up:
+                            SetPath(_x, (_y-1));
+                            break;
+                        case Direction.Right:
+                            SetPath((_x+1), _y);
+                            break;
+                        case Direction.Down:
+                            SetPath(_x, (_y+1));
+                            break;
+                        case Direction.Left:
+                            SetPath((_x-1), _y);
+                            break;
+                    }
+                }
+                return connected;
+            }
             void GetDeadEndPath(int x,int y){
                 var directions = new List<Direction>();
-                    if (this.Maze[x, y - 1] == Wall && this.Maze[x, y - 2] == Wall)
-                        directions.Add(Direction.Up);
-                    if (this.Maze[x + 1, y] == Wall && this.Maze[x + 2, y] == Wall)
-                        directions.Add(Direction.Right);
-                    if (this.Maze[x, y + 1] == Wall && this.Maze[x, y + 2] == Wall)
-                        directions.Add(Direction.Down);
-                    if (this.Maze[x - 1, y] == Wall && this.Maze[x - 2, y] == Wall)
-                        directions.Add(Direction.Left);
-                    if (directions.Count == 0) Maze[x,y] = Tresure;
+                if (this.Maze[x, y - 1] == WALL && this.Maze[x, y - 2] == WALL)
+                    directions.Add(Direction.Up);
+                if (this.Maze[x + 1, y] == WALL && this.Maze[x + 2, y] == WALL)
+                    directions.Add(Direction.Right);
+                if (this.Maze[x, y + 1] == WALL && this.Maze[x, y + 2] == WALL)
+                    directions.Add(Direction.Down);
+                if (this.Maze[x - 1, y] == WALL && this.Maze[x - 2, y] == WALL)
+                    directions.Add(Direction.Left);
+                
+                if (directions.Count == 0){
+                    if(!door_install){    
+                        Maze[x,y] = DOOR;
+                        door_install =true;
+                    }else{
+                        Maze[x,y] = TRESURE;
+                    }
+                }
             }
 
             // 座標を通路とする(穴掘り開始座標候補の場合は保持)
             private void SetPath(int x, int y)
             {
-                this.Maze[x, y] = Path;
+                this.Maze[x, y] = PATH;
                 if (x % 2 == 1 && y % 2 == 1)
                 {
                     // 穴掘り候補座標
@@ -154,7 +203,7 @@ namespace DungeonExploration.Maze{
                 }
             }
             private void  SetTresure(int x,int y){
-                this.Maze[x, y] = Tresure;
+                this.Maze[x, y] = TRESURE;
             }
 
             // 穴掘り開始位置をランダムに取得する
@@ -188,9 +237,12 @@ namespace DungeonExploration.Maze{
             // }
 
             // 通路・壁情報
-            const int Path = 0;
-            const int Wall = 1;
-            const int Tresure = 2;
+            const int threshold = 13;
+            const int PATH = 0;
+            const int WALL = 1;
+            const int TRESURE = 2;
+            const int START = 3;
+            const int DOOR= 4;
 
             // セル情報
             private class Cell
@@ -200,8 +252,7 @@ namespace DungeonExploration.Maze{
             }
             public void InitMazeSeed(System.Random argRandom){
                 myrnd = argRandom;
-            }
-
+            } 
             // 方向
             private enum Direction
             {
