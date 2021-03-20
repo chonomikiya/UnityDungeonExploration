@@ -24,6 +24,7 @@ public class MazeGenerator : MonoBehaviour
     [SerializeField] GameObject TresureManage = null;
     [SerializeField] GameObject Player = null;
     [SerializeField] GameObject CameraRig = null;
+    [SerializeField] ObtainedItem m_obtaineditem;
     GameObject MazeGroup = null;
 
 
@@ -105,7 +106,7 @@ public class MazeGenerator : MonoBehaviour
                     Tresure.GetComponent<TresureInfo>().SetMazeType(CheckMazeType(_z,_x));
                     Tresure.GetComponent<TresureInfo>().ChangeMapSprite();
                     Tresure.GetComponent<TresureInfo>().SetTresureList(TresureManage.GetComponent<LookTableContents>().GetItemTableForList());
-
+                    Tresure.GetComponent<TresureInfo>().SetObtainedScript(m_obtaineditem);
                 }
                 if(maze[_z,_x]== DOOR){
                     GameObject Tresure = Instantiate(DoorPrefab,new Vector3(_x*init0ffset,0,-_z*init0ffset),GetTresureDirection(_z,_x)) as GameObject;

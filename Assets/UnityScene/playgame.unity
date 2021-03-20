@@ -1342,6 +1342,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1364887052}
+  - component: {fileID: 1364887053}
   m_Layer: 0
   m_Name: PassToResult
   m_TagString: Untagged
@@ -1363,6 +1364,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1364887053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1364887051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 987f3763912ee7c13bec13f28fbeb572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1507035811
 GameObject:
   m_ObjectHideFlags: 3
@@ -2044,6 +2057,7 @@ MonoBehaviour:
   TresureManage: {fileID: 1223443988}
   Player: {fileID: 1206052230}
   CameraRig: {fileID: 4781486699416128084}
+  m_obtaineditem: {fileID: 1364887053}
 --- !u!4 &1865705239
 Transform:
   m_ObjectHideFlags: 0

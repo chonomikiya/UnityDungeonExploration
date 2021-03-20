@@ -21,21 +21,30 @@ public class ResultUi : MonoBehaviour
     const int UI_SPACE = -25;
     const float UI_RECT_OFFSET = 17.3311f;
     [SerializeField] const int TOTAL_OFFSET = -10;
+    GameObject UserPossession = null;
     // Start is called before the first frame update
     void Start()
     {
+        
         myuianime = this.GetComponent<UiAnime>();
         m_sqlitedatabase = new SqliteDatabase("default.db");
         //ここから
         SetTotalMoney();
-        GetUserPossession();
+        if(GameObject.Find("PassToResult") != null){
+            UserPossession = GameObject.Find("PassToResult");
+            GetUserPossession(UserPossession.GetComponent<ObtainedItem>().GetObtainedList());
+            Destroy(UserPossession);
+        }else{
+            GetUserPossession();
+        }
+        
     }
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space)){
-            AddUiRow();
-        }
+        // if(Input.GetKeyDown(KeyCode.Space)){
+        //     AddUiRow();
+        // }
     }
     public void SetTotalMoney(){
         int money = GetSqlMoneyTable();
@@ -46,27 +55,60 @@ public class ResultUi : MonoBehaviour
         return  (int)dt.Rows[0]["total"];
     }
     //Debug用
-    public void AddUiRow(){
-        DataTable dt = m_sqlitedatabase.ExecuteQuery("SELECT id,item,sell FROM user_possession");
-        foreach(DataRow dr in dt.Rows){
-            GameObject AddRow = Instantiate(RowPrefab) as GameObject;
-            AddRow.name = "Row_"+cookie;
-            AddRow.transform.SetParent(RowTarget.transform,false);
-            AddRow.GetComponent<ItemRow>().ChangePosition(new Vector3(0,UI_SPACE*cookie,0));
-            AddRow.GetComponent<ItemRow>().SetItemText((string)dr["item"]);
-            AddRow.GetComponent<ItemRow>().SetPriceText(dr["sell"].ToString());
-            cookie++;
-        }
-        if(cookie > 8){
-            ContentRectResize(cookie);
-        }
-    }
+    // public void AddUiRow(){
+    //     DataTable dt = m_sqlitedatabase.ExecuteQuery("SELECT id,item,sell FROM user_possession");
+    //     foreach(DataRow dr in dt.Rows){
+    //         GameObject AddRow = Instantiate(RowPrefab) as GameObject;
+    //         AddRow.name = "Row_"+cookie;
+    //         AddRow.transform.SetParent(RowTarget.transform,false);
+    //         AddRow.GetComponent<ItemRow>().ChangePosition(new Vector3(0,UI_SPACE*cookie,0));
+    //         AddRow.GetComponent<ItemRow>().SetItemText((string)dr["item"]);
+    //         AddRow.GetComponent<ItemRow>().SetPriceText(dr["sell"].ToString());
+    //         cookie++;
+    //     }
+    //     if(cookie > 8){
+    //         ContentRectResize(cookie);
+    //     }
+    // }
     //前シーンで手に入れたものを表示
     public void GetUserPossession(){
         DataTable dt = m_sqlitedatabase.ExecuteQuery("SELECT id,item,sell FROM user_possession");
         int count = 1;
         int total = 0;
         foreach(DataRow dr in dt.Rows){
+            GameObject AddRow = Instantiate(RowPrefab) as GameObject;
+            AddRow.name = "Row_"+count;
+            AddRow.transform.SetParent(RowTarget.transform,false);
+            AddRow.GetComponent<ItemRow>().ChangePosition(new Vector3(0,UI_SPACE*count,0));
+            AddRow.GetComponent<ItemRow>().SetItemText((string)dr["item"]);
+            AddRow.GetComponent<ItemRow>().SetPriceText(dr["sell"].ToString());
+            count++;
+            total += (int)dr["sell"];
+        }
+        //最後にTotalを表示
+        GameObject totalGameobj = Instantiate(TotalPrefab) as GameObject;
+        totalGameobj.name = "total";
+        totalGameobj.transform.SetParent(RowTarget.transform,false);
+        totalGameobj.GetComponent<ItemRow>().ChangePosition(new Vector3(0,UI_SPACE*count+TOTAL_OFFSET,0));
+        totalGameobj.GetComponent<ItemRow>().SetPriceText(total.ToString());
+        //8以上でScrollViewからはみ出てしまうので
+        if(count > 8){
+            ContentRectResize(count);
+        }
+        //Totalを反映
+        AddTotalUi.GetComponent<MoneyUi>().SetAddTotalUi(total);
+        myuianime.UiAnimation_DOWN(AddTotalUi);
+        TotalMoneyUi.GetComponent<MoneyUi>().UpdateTotalMoney(total);
+        UpdateSql(total);
+    }
+    public void GetUserPossession(List<DataRow> _items){
+        if(_items ==null){
+            Debug.Log("ItemList is null");
+            return;
+        }
+        int count = 1;
+        int total = 0;
+        foreach(DataRow dr in _items){
             GameObject AddRow = Instantiate(RowPrefab) as GameObject;
             AddRow.name = "Row_"+count;
             AddRow.transform.SetParent(RowTarget.transform,false);

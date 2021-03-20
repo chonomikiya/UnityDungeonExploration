@@ -1545,8 +1545,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b7d15d4f0e8854a8b7ca77c2ab31dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  result_money: {fileID: 732538177}
-  speed: 120
 --- !u!1 &1061260301
 GameObject:
   m_ObjectHideFlags: 0
@@ -1710,8 +1708,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b7d15d4f0e8854a8b7ca77c2ab31dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  result_money: {fileID: 0}
-  speed: 15
 --- !u!1 &1070681655
 GameObject:
   m_ObjectHideFlags: 0
@@ -2547,7 +2543,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 456758060}
   m_HandleRect: {fileID: 456758059}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 1.000001
   m_Size: 0.90555555
   m_NumberOfSteps: 0
   m_OnValueChanged:

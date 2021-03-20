@@ -44,12 +44,43 @@ public class LookTableContents : MonoBehaviour
     //     return  dr;
     // }
 
-    //今はItemTableのみでTresureをセットする
-    //後からPrefixとmagnification
     //03/03 何度もDBに問いかけるのではなく一旦全部DataTableの変数に全部取り出して後から加工して使うのがいいかも
     public List<DataRow> GetItemTableForList(){
-        DataTable dt = GetSqlSelectTable("id ,item ,sell","itemtable","id = "+GetRandomItemId());
-        List<DataRow> mylist =dt.Rows;
+        List<DataRow> mylist = GetSqlSelectTable("id,item,sell","listmodel").Rows;
+        DataTable itemtable = GetSqlSelectTable("id ,item ,sell","itemtable","id = "+GetRandomItemId());
+        DataTable prefixtable = GetSqlSelectTable("id ,prefix ,magnification","prefixtable","id = "+GetRandoomPrefixId());
+        DataSet ds =new DataSet();
+        mylist[0]["id"] = 1;
+        mylist[0]["item"] = (string)prefixtable.Rows[0]["prefix"]+(string)itemtable.Rows[0]["item"];
+        mylist[0]["sell"] = (int)((int)itemtable.Rows[0]["sell"] * (double)prefixtable.Rows[0]["magnification"]);
+        foreach(DataRow dr in mylist){
+            var val1 = dr["id"];
+            var val2 = dr["item"];
+            var val3 = dr["sell"];
+            Debug.Log(val1);
+            Debug.Log(val2);
+            Debug.Log(val3);
+        }
+        return mylist;
+        // DataTable dt = GetSqlSelectTable("id ,item ,sell","itemtable","id = "+GetRandomItemId());
+        // List<DataRow> mylist =dt.Rows;
+        // foreach(DataRow dr in mylist){
+        //     var val1 = dr["id"];
+        //     var val2 = dr["item"];
+        //     var val3 = dr["sell"];
+        //     Debug.Log(val1);
+        //     Debug.Log(val2);
+        //     Debug.Log(val3);
+        // }
+        // return mylist;
+    }
+    public List<DataRow> TmpMethod(){
+        List<DataRow> mylist = GetSqlSelectTable("id,item,sell","listmodel").Rows;
+        DataTable itemtable = GetSqlSelectTable("id ,item ,sell","itemtable","id = "+GetRandomItemId());
+        DataTable prefixtable = GetSqlSelectTable("id ,prefix ,magnification","prefixtable","id = "+GetRandoomPrefixId());
+        mylist[0]["id"] = 0;
+        mylist[0]["item"] = (string)prefixtable.Rows[0]["prefix"]+(string)itemtable.Rows[0]["item"];
+        mylist[0]["sell"] = (int)((int)itemtable.Rows[0]["sell"] * (double)prefixtable.Rows[0]["magnification"]);
         foreach(DataRow dr in mylist){
             var val1 = dr["id"];
             var val2 = dr["item"];
@@ -96,27 +127,6 @@ public class LookTableContents : MonoBehaviour
         int _element = myrandom.Next(prefix_id.Length);
         return prefix_id[_element];
     }
-    
-    // public void GetItemtableId(){
-    //     string id = "id";
-    //     string itemtable = "itemtable";
-    //     // DataTable dt = SqliteDatabase.ExecuteQuery("SELECT id FROM itemtable");
-    //     DataTable dt = GetSqlSelectTable(id,itemtable);
-    //     int count = dt.Rows.Count;
-    //     int [] array = new int[count];
-    //     //for文で列の要素をint配列へ格納
-    //     for (int i=0;i<dt.Rows.Count;i++){
-    //         DataRow dr = dt.Rows[i];
-    //         array[i] = (int)dr[id];
-    //     }
-    //     //配列からランダムな値を取り出す
-    //     System.Random myrandom = new System.Random(1234);
-    //     for (int i=0;i<array.Length;i++){
-    //         int rndvalue = myrandom.Next(array.Length);
-    //         Debug.Log("RandomValue = "+rndvalue);
-    //         Debug.Log(array[rndvalue]);
-    //     }
-    // }
 
     public DataTable GetSqlSelectTable(string _column,string _table){
         string _query = string.Format("SELECT {0} FROM {1}",_column,_table);

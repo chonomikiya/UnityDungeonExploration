@@ -24,7 +24,7 @@ public class RangeAction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F)&&Ranged){
+        if(Input.GetKeyDown(KeyCode.F)&&Ranged&&!pressed){
             switch(this.gameObject.tag){
                 case "Door":
                     SceneChange();

@@ -7,11 +7,10 @@ namespace DungeonExploration.Maze{
         SpriteRenderer myicon = null;
         List<DataRow> tresure;
         [SerializeField] int prefix_id,item_id;
-        [SerializeField] string tresurename;
         [SerializeField] int myid;
         [SerializeField] string myitem;
         [SerializeField] int mysell;
-
+        ObtainedItem m_obtainedItem;
         protected override void Awake()
         {
             base.Awake();    
@@ -28,6 +27,18 @@ namespace DungeonExploration.Maze{
                 mysell = (int)dr["sell"];
             }
         }
+        public string GetTresureItem(){
+            return this.myitem;
+        }
+        public List<DataRow> GetTresureList(){
+            return tresure;
+        }
+        public void SetObtainedScript(ObtainedItem _obtaineditem){
+            this.m_obtainedItem = _obtaineditem;
+        }
+        public void PassToItemList(){
+            m_obtainedItem.AddItemList(GetTresureList());
+        }
         //ItemとPrefixのId値を格納するの関数を呼び出す
         public void ItemuIdSet(int _itemid,int _prefixid){
             SetItemId(_itemid);
@@ -38,9 +49,6 @@ namespace DungeonExploration.Maze{
         }
         public void SetPrefixId(int _prefixId){
             this.prefix_id = _prefixId;
-        }
-        public void SetTresureItem(string _tresure){
-            this.tresurename = _tresure;
         }
         public override void SetMapSprite(Sprite _sprite)
         {
@@ -57,6 +65,7 @@ namespace DungeonExploration.Maze{
         private void GetComponentIconSprite(){
             this.myicon = this.transform.GetChild(1).GetComponent<SpriteRenderer>();
         }
+        
         public override void ChangeMapSprite(){
             //Tresureの部屋はQuaternionで向きを操作しているかつ入口が一つな為miniMapの画像は北で固定
             SetMapSprite(GetComponentMapUI().GetMapSprite(Map.S));

@@ -6,8 +6,7 @@ using TMPro;
 
 public class MoneyUi : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI result_money = null;
-    [SerializeField] int speed = 120;
+    int speed = 10;
     bool isUpdated = false;
     int totalmoney =0,addmoney=0,add=0,corrent = 0;
     private void Update() {
@@ -29,7 +28,6 @@ public class MoneyUi : MonoBehaviour
     public void SetAddTotalUi(int _addtotal){
         TextMeshProUGUI addtotal = GetComponentInChildren<TextMeshProUGUI>();
         addtotal.text = "+ " + _addtotal.ToString();
-        // result_money.text ="+ " +_text;
     }
     public void SetTotalMoneyUi(int _total){
         TextMeshProUGUI totalTMP = GetComponentInChildren<TextMeshProUGUI>();

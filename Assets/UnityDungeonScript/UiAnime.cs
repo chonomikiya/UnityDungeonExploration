@@ -7,6 +7,8 @@ using DG.Tweening;
 
 public class UiAnime : MonoBehaviour
 {
+    float offset = 0.5f;
+    float animation_speed = 3f;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +19,13 @@ public class UiAnime : MonoBehaviour
     void Update()
     {
         
+    }
+    public void ObjAnimation_UP(GameObject target){
+        Vector3 pos = target.transform.position;
+        target.transform.DOMoveY(pos.y + offset,animation_speed);
+    }
+    public void TMPAnimation_Fade(TextMeshPro target){
+        target.DOFade(0f,4f);
     }
     public void UiAnimation_UP(GameObject target){
         // target.transform.DOMoveY(1f,1f);
