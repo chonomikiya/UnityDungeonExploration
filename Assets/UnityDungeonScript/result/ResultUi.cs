@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 public class ResultUi : MonoBehaviour
 {
     //Rowが多い場合はContentのHeightを加える
-    [SerializeField] GameObject RowTarget = null;
     [SerializeField] RectTransform Content = null;
+    [SerializeField] GameObject RowTarget = null;
 
     [SerializeField] GameObject RowPrefab = null;
     [SerializeField] GameObject TotalPrefab = null;
     [SerializeField] GameObject AddTotalUi = null;
+    [SerializeField] GameObject TotalMoneyUi = null;
     SqliteDatabase m_sqlitedatabase;
     UiAnime myuianime;
     //デバッグ用の変数、叩くと増えるので
@@ -25,6 +26,8 @@ public class ResultUi : MonoBehaviour
     {
         myuianime = this.GetComponent<UiAnime>();
         m_sqlitedatabase = new SqliteDatabase("default.db");
+        //ここから
+        SetTotalMoney();
         GetUserPossession();
     }
     // Update is called once per frame
@@ -33,6 +36,14 @@ public class ResultUi : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space)){
             AddUiRow();
         }
+    }
+    public void SetTotalMoney(){
+        int money = GetSqlMoneyTable();
+        TotalMoneyUi.GetComponent<MoneyUi>().SetTotalMoneyUi(money);
+    }
+    public int GetSqlMoneyTable(){
+        DataTable dt = m_sqlitedatabase.ExecuteQuery(string.Format("SELECT {0} FROM {1}","total","money"));
+        return  (int)dt.Rows[0]["total"];
     }
     //Debug用
     public void AddUiRow(){
@@ -50,6 +61,7 @@ public class ResultUi : MonoBehaviour
             ContentRectResize(cookie);
         }
     }
+    //前シーンで手に入れたものを表示
     public void GetUserPossession(){
         DataTable dt = m_sqlitedatabase.ExecuteQuery("SELECT id,item,sell FROM user_possession");
         int count = 1;
@@ -74,12 +86,16 @@ public class ResultUi : MonoBehaviour
         if(count > 8){
             ContentRectResize(count);
         }
-        //Totalをmoneyに反映
-        AddTotalUi.GetComponent<MoneyUi>().SetAddTotalUi(total.ToString());
+        //Totalを反映
+        AddTotalUi.GetComponent<MoneyUi>().SetAddTotalUi(total);
         myuianime.UiAnimation_DOWN(AddTotalUi);
-    
+        TotalMoneyUi.GetComponent<MoneyUi>().UpdateTotalMoney(total);
+        UpdateSql(total);
     }
-
+    public void UpdateSql(int _total){
+        m_sqlitedatabase
+        .ExecuteQuery(string.Format("Update {0} SET {1} = {2}","money","total",(GetSqlMoneyTable()+_total).ToString()));
+    }
     public void ContentRectResize(int _count){
         Content.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,180f + (_count-8)*UI_RECT_OFFSET);
     }

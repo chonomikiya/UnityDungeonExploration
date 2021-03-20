@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using DG.Tweening;
 
 public class UiAnime : MonoBehaviour
@@ -22,6 +23,7 @@ public class UiAnime : MonoBehaviour
     }
     public void UiAnimation_DOWN(GameObject target){
         Vector3 pos = target.transform.position;
-        target.transform.DOMoveY(pos.y + 10,2f);
+        target.transform.DOMoveY(pos.y + 10,1f);
+        target.GetComponentInChildren<TextMeshProUGUI>().DOFade(0f,3f);
     }
 }

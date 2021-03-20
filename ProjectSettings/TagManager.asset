@@ -7,6 +7,8 @@ TagManager:
   - Path
   - Tresure
   - Entrance
+  - Door
+  - TresureBox
   layers:
   - Default
   - TransparentFX

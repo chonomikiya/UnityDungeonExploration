@@ -7,16 +7,17 @@ using UnityEngine.SceneManagement;
 public class RangeAction : MonoBehaviour
 {
     [SerializeField] TextMeshPro textMeshPro;
-    bool Ranged = false;
+    bool Ranged = false,pressed = false;
+
     private void OnTriggerEnter(Collider other) {
-        if(other.tag == "Player"){
-            this.textMeshPro.enabled = true;
+        if(other.tag == "Player" && !pressed){
+            OnViewText();
             Ranged =true;
         }
     }
     private void OnTriggerExit(Collider other) {
-        if(other.tag == "Player"){
-            this.textMeshPro.enabled = false;
+        if(other.tag == "Player" ){
+            InvisibleText();
             Ranged = false;
         }
     }
@@ -24,8 +25,30 @@ public class RangeAction : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.F)&&Ranged){
-            SceneChange();
+            switch(this.gameObject.tag){
+                case "Door":
+                    SceneChange();
+                    break;
+                case "TresureBox":
+                    this.GetComponent<TresureBox>().Animation_OPEN();
+                    InvisibleText();
+                    pressed = true;
+                    break;
+                default :
+                    Debug.Log("RangeActionErr");
+                    break;
+            }
         }    
+    }
+    public void InvisibleText(){
+        this.textMeshPro.enabled = false;
+    }
+    public void OnViewText(){
+        this.textMeshPro.enabled = true;
+
+    }
+    public void ViewText(){
+
     }
     private void SceneChange(){
         SceneManager.LoadScene("result");

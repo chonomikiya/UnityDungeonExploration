@@ -852,7 +852,7 @@ GameObject:
   - component: {fileID: 489546070}
   - component: {fileID: 489546069}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: total
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -874,8 +874,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 176.51, y: -13.3}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -9, y: -4}
+  m_SizeDelta: {x: 200, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &489546069
 MonoBehaviour:
@@ -932,7 +932,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1546,6 +1546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   result_money: {fileID: 732538177}
+  speed: 120
 --- !u!1 &1061260301
 GameObject:
   m_ObjectHideFlags: 0
@@ -1631,6 +1632,7 @@ GameObject:
   - component: {fileID: 1069312374}
   - component: {fileID: 1069312376}
   - component: {fileID: 1069312375}
+  - component: {fileID: 1069312377}
   m_Layer: 5
   m_Name: money_ui
   m_TagString: Untagged
@@ -1696,6 +1698,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1069312373}
   m_CullTransparentMesh: 0
+--- !u!114 &1069312377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069312373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b7d15d4f0e8854a8b7ca77c2ab31dfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  result_money: {fileID: 0}
+  speed: 15
 --- !u!1 &1070681655
 GameObject:
   m_ObjectHideFlags: 0
@@ -2531,8 +2547,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 456758060}
   m_HandleRect: {fileID: 456758059}
   m_Direction: 2
-  m_Value: 1.000001
-  m_Size: 0.9055556
+  m_Value: 1
+  m_Size: 0.90555555
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2738,13 +2754,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ae680267bc74d07db62f4f1c9871d42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RowTarget: {fileID: 1848807899}
   Content: {fileID: 253846344}
+  RowTarget: {fileID: 1848807899}
   RowPrefab: {fileID: 4632714613496174330, guid: add07e9b9668b969a8eddbc4c17956e1,
     type: 3}
   TotalPrefab: {fileID: 1936603266938827849, guid: b9be747024d4a72a1bc7bcad21e10b74,
     type: 3}
   AddTotalUi: {fileID: 964806380}
+  TotalMoneyUi: {fileID: 1069312373}
 --- !u!4 &2061479701
 Transform:
   m_ObjectHideFlags: 0

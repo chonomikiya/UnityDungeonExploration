@@ -49,6 +49,7 @@ public class BaseUiCtl : MonoBehaviour
     //上にUIを重ねる場合、上層下層にボタンがあると被って見辛くなるのでけしたがいいやも
     //UIのLayerをレンダリングしないものに変える
     //引数にGameObjectを持ってきてそれを見えなくする方が後々使いやすくなるかも
+    //上が上手く行かなかったので直接enabledを弄る方法を採用
     public void InvisibleButtonUI(){
         Image[] childImage = tform_ButtonGroup.GetComponentsInChildren<Image>();
         Text [] childText  = tform_ButtonGroup.GetComponentsInChildren<Text>();
