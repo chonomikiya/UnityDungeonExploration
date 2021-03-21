@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(LookTableContents))]
 public class BaseUiCtl : MonoBehaviour
 {
+    [SerializeField] GameObject AudioManagePrefab = null;
     [SerializeField] GameObject input_ui_prefab = null;
     [SerializeField] Transform tform_ButtonGroup = null;
     [SerializeField] Text money_ui = null;
@@ -18,6 +19,10 @@ public class BaseUiCtl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(GameObject.FindWithTag("AudioObj") == null){
+            GameObject AudioManager = Instantiate(AudioManagePrefab) as GameObject;
+            DontDestroyOnLoad(AudioManager);
+        }
         myLookTableContents = this.GetComponent<LookTableContents>();
         OnViewMoneyUI();
     }
@@ -28,7 +33,11 @@ public class BaseUiCtl : MonoBehaviour
         
     }
     public void OnNextSceneButton(){
+        Destroy(GameObject.FindWithTag("AudioObj"));
         if(isSeedInputFlg){
+            SceneManager.LoadScene("playgame");
+        }else{
+            new SeedDeliver().SetSeed();
             SceneManager.LoadScene("playgame");
         }
     }
@@ -64,7 +73,6 @@ public class BaseUiCtl : MonoBehaviour
         Image[] childImage = tform_ButtonGroup.GetComponentsInChildren<Image>();
         Text [] childText  = tform_ButtonGroup.GetComponentsInChildren<Text>();
         for (int i=0;i<childImage.Length;i++){
-            Debug.Log(i);
             childImage[i].enabled = true;
         }
         for(int i=0;i<childText.Length;i++){
@@ -81,7 +89,7 @@ public class BaseUiCtl : MonoBehaviour
         string str_money =string.Format("{0:#,0}",_money);
         money_ui.text =str_money;
     }
-    // public void SetIsSeedInput(bool _judge){
-    //     this.isSeedInputFlg = _judge;
-    // }
+    public void ChangeScene_title(){
+        SceneManager.LoadScene("title");
+    }
 }

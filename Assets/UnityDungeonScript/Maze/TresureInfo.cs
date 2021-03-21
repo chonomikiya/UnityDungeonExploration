@@ -11,6 +11,7 @@ namespace DungeonExploration.Maze{
         [SerializeField] string myitem;
         [SerializeField] int mysell;
         ObtainedItem m_obtainedItem;
+        GameSoundManage gameSoundManage;
         protected override void Awake()
         {
             base.Awake();    
@@ -44,6 +45,12 @@ namespace DungeonExploration.Maze{
             SetItemId(_itemid);
             SetPrefixId(_prefixid);
         }
+        public void SetGameSoundReference(GameSoundManage _gamesoundmanage){
+            this.gameSoundManage = _gamesoundmanage;
+        }
+        public void OpenSound_Play(){
+            gameSoundManage.BoxOpen_Play();
+        }
         public void SetItemId(int _itemId){
             this.item_id = _itemId;
         }
@@ -65,6 +72,7 @@ namespace DungeonExploration.Maze{
         private void GetComponentIconSprite(){
             this.myicon = this.transform.GetChild(1).GetComponent<SpriteRenderer>();
         }
+        
         
         public override void ChangeMapSprite(){
             //Tresureの部屋はQuaternionで向きを操作しているかつ入口が一つな為miniMapの画像は北で固定

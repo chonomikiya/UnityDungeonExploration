@@ -26,6 +26,7 @@ public class TresureBox : MonoBehaviour
     public void Animation_OPEN(){
         SetItemName();
         tresure_animetor.Play("open");
+        this.transform.parent.GetComponent<TresureInfo>().OpenSound_Play();
     }
 
     public void SetItemName(){

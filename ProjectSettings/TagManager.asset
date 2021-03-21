@@ -9,6 +9,7 @@ TagManager:
   - Entrance
   - Door
   - TresureBox
+  - AudioObj
   layers:
   - Default
   - TransparentFX

@@ -25,7 +25,10 @@ public class MazeGenerator : MonoBehaviour
     [SerializeField] GameObject Player = null;
     [SerializeField] GameObject CameraRig = null;
     [SerializeField] ObtainedItem m_obtaineditem;
+    [SerializeField] GameSoundManage gameSoundManage;
     GameObject MazeGroup = null;
+    
+    Vector3 offset = new Vector3(0,0.55f,0);
 
 
     const int WALL = 1,PATH = 0,TRESURE = 2,ENTRANCE = 3,DOOR = 4;
@@ -35,6 +38,7 @@ public class MazeGenerator : MonoBehaviour
         SeedDeliver seeddeliver = new SeedDeliver();
         myRandomCtl.InitRandom(seeddeliver.GetSeed());
         MazeGenerate();
+        gameSoundManage.PlayBgm(myRandomCtl.GetRandomLength(gameSoundManage.GetBgmLength()));
     }
     // Update is called once per frame
     void Update()
@@ -49,6 +53,7 @@ public class MazeGenerator : MonoBehaviour
         Maze = myMazeDigger.CreateMaze();
         instanceMaze(Maze);
     }
+    //Debug用
     void DeleteMaze(){
         if( MazeGroup != null){
             Destroy(MazeGroup.gameObject);
@@ -89,8 +94,8 @@ public class MazeGenerator : MonoBehaviour
                     Path.GetComponent<MazeInfo>().SetMazeType(CheckMazeType(_z,_x));
                     Path.GetComponent<MazeInfo>().ChangeMapSprite();
                     if(maze[_z,_x] == ENTRANCE){
-                        this.Player.transform.position = Path.transform.position;
-                        this.CameraRig.transform.position =Path.transform.position;
+                        this.Player.transform.position = Path.transform.position + offset;
+                        this.CameraRig.transform.position =Path.transform.position + offset;
                     }
                 }
                 if((maze[_z,_x]) == TRESURE){
@@ -107,6 +112,7 @@ public class MazeGenerator : MonoBehaviour
                     Tresure.GetComponent<TresureInfo>().ChangeMapSprite();
                     Tresure.GetComponent<TresureInfo>().SetTresureList(TresureManage.GetComponent<LookTableContents>().GetItemTableForList());
                     Tresure.GetComponent<TresureInfo>().SetObtainedScript(m_obtaineditem);
+                    Tresure.GetComponent<TresureInfo>().SetGameSoundReference(gameSoundManage);
                 }
                 if(maze[_z,_x]== DOOR){
                     GameObject Tresure = Instantiate(DoorPrefab,new Vector3(_x*init0ffset,0,-_z*init0ffset),GetTresureDirection(_z,_x)) as GameObject;

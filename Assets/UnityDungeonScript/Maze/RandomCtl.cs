@@ -21,6 +21,9 @@ namespace DungeonExploration.Maze{
             SetRndSeed(val);
             myRandom = new System.Random(val);
         }
+        public int GetRandomLength(int index){
+            return myRandom.Next(index);
+        }
          
 
         //seedが数字のみなら引数にしてRndomを初期化
