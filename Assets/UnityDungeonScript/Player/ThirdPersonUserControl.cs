@@ -11,8 +11,10 @@ namespace DungeonExploration.Player
         private Transform m_Cam;                  // A reference to the main camera in the scenes transform
         private Vector3 m_CamForward;             // The current forward direction of the camera
         private Vector3 m_Move;
-        private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
-        private bool m_torch;
+        //ジャンプフラグ、現在はfalseで固定
+        private bool m_Jump = false;                      // the world-relative desired move direction, calculated from the camForward and user input.
+        //松明フラグ、現在はfalseで固定
+        private bool m_torch =false;
         
         private void Start()
         {
@@ -35,9 +37,10 @@ namespace DungeonExploration.Player
 
         private void Update()
         {
-            if(Input.GetKeyDown(KeyCode.Z)){
-                m_torch = !m_torch;
-            }
+            //松明の構えるフラグ、現在は停止中
+            // if(Input.GetKeyDown(KeyCode.Z)){
+            //     m_torch = !m_torch;
+            // }
             if (!m_Jump)
             {
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");

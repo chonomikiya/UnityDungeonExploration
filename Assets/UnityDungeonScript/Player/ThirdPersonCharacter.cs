@@ -79,7 +79,6 @@ namespace DungeonExploration.Player
 		}
 		void SetEquidStatus(bool torch){
 			if(torch){
-				Debug.Log("true torch");
 				m_torch = true;
 			}else{
 				m_torch = false;

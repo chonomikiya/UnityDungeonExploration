@@ -5542,9 +5542,9 @@ VisualEffectResource:
         - m_ExpressionIndex: 363
           m_Value: 0.04
         - m_ExpressionIndex: 364
-          m_Value: 0.69
+          m_Value: 0.28
         - m_ExpressionIndex: 366
-          m_Value: 1
+          m_Value: 0.67
         - m_ExpressionIndex: 380
           m_Value: 1
         - m_ExpressionIndex: 382
@@ -8052,7 +8052,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 1
+      m_SerializableObject: 0.67
     m_Space: 2147483647
   m_Property:
     name: Initial Size
@@ -8086,7 +8086,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0.69
+      m_SerializableObject: 0.28
     m_Space: 2147483647
   m_Property:
     name: Width Scale
