@@ -19,7 +19,7 @@ public class ResultUi : MonoBehaviour
     int cookie =1;
     //UIの調整用変数
     const int UI_SPACE = -25;
-    const float UI_RECT_OFFSET = 17.3311f;
+    const float UI_RECT_OFFSET = 25f;
     [SerializeField] const int TOTAL_OFFSET = -10;
     GameObject UserPossession = null;
     // Start is called before the first frame update
@@ -75,16 +75,18 @@ public class ResultUi : MonoBehaviour
         DataTable dt = m_sqlitedatabase.ExecuteQuery("SELECT id,item,sell FROM user_possession");
         int count = 1;
         int total = 0;
-        foreach(DataRow dr in dt.Rows){
-            GameObject AddRow = Instantiate(RowPrefab) as GameObject;
-            AddRow.name = "Row_"+count;
-            AddRow.transform.SetParent(RowTarget.transform,false);
-            AddRow.GetComponent<ItemRow>().ChangePosition(new Vector3(0,UI_SPACE*count,0));
-            AddRow.GetComponent<ItemRow>().SetItemText((string)dr["item"]);
-            AddRow.GetComponent<ItemRow>().SetPriceText(dr["sell"].ToString());
-            count++;
-            total += (int)dr["sell"];
-        }
+        // for(int i=0;i<4;i++){       
+        //  foreach(DataRow dr in dt.Rows){
+        //         GameObject AddRow = Instantiate(RowPrefab) as GameObject;
+        //         AddRow.name = "Row_"+count;
+        //         AddRow.transform.SetParent(RowTarget.transform,false);
+        //         AddRow.GetComponent<ItemRow>().ChangePosition(new Vector3(0,UI_SPACE*count,0));
+        //         AddRow.GetComponent<ItemRow>().SetItemText((string)dr["item"]);
+        //         AddRow.GetComponent<ItemRow>().SetPriceText(dr["sell"].ToString());
+        //         count++;
+        //         total += (int)dr["sell"];
+        //     }
+        // }
         //最後にTotalを表示
         GameObject totalGameobj = Instantiate(TotalPrefab) as GameObject;
         totalGameobj.name = "total";
@@ -92,7 +94,7 @@ public class ResultUi : MonoBehaviour
         totalGameobj.GetComponent<ItemRow>().ChangePosition(new Vector3(0,UI_SPACE*count+TOTAL_OFFSET,0));
         totalGameobj.GetComponent<ItemRow>().SetPriceText(total.ToString());
         //8以上でScrollViewからはみ出てしまうので
-        if(count > 8){
+        if(count > 4){
             ContentRectResize(count);
         }
         //Totalを反映
@@ -125,7 +127,7 @@ public class ResultUi : MonoBehaviour
         totalGameobj.GetComponent<ItemRow>().ChangePosition(new Vector3(0,UI_SPACE*count+TOTAL_OFFSET,0));
         totalGameobj.GetComponent<ItemRow>().SetPriceText(total.ToString());
         //8以上でScrollViewからはみ出てしまうので
-        if(count > 8){
+        if(count > 4){
             ContentRectResize(count);
         }
         //Totalを反映
@@ -139,7 +141,7 @@ public class ResultUi : MonoBehaviour
         .ExecuteQuery(string.Format("Update {0} SET {1} = {2}","money","total",(GetSqlMoneyTable()+_total).ToString()));
     }
     public void ContentRectResize(int _count){
-        Content.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,180f + (_count-8)*UI_RECT_OFFSET);
+        Content.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,180f + (_count-4)*UI_RECT_OFFSET);
     }
     public void ChangeSceneBase(){
         SceneManager.LoadScene("base");

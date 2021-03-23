@@ -9,8 +9,9 @@ using System;
 public class InputCanvasCtl : MonoBehaviour
 {
     [SerializeField] InputField inputField = null;   
-    [SerializeField] string inputtext; 
-    const int TEXT_MAX_LENGTH = 6;
+    string inputtext; 
+    [SerializeField] Text whatInput;
+    const int TEXT_OVER_LENGTH = 7;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,16 +23,18 @@ public class InputCanvasCtl : MonoBehaviour
 
         if(CheckSeedValueBeUse(inputtext) && Int32.TryParse(inputtext , out result)){
             seeddeliver.SetSeed(result);
-            Debug.Log(seeddeliver.GetSeed());
+            whatInput.text = inputtext;
+            inputField.text = "";
         }else{
             seeddeliver.SetSeed();
-            Debug.Log(seeddeliver.GetSeed());
+            whatInput.text = "入力した値は無効です";
+            inputField.text = "";
         }
     }
     //入力をSeedへ格納できるかcheck
     public bool CheckSeedValueBeUse(string _text){
         bool _isparse = false;
-        if(_text.Length < TEXT_MAX_LENGTH){
+        if(_text.Length < TEXT_OVER_LENGTH){
             _isparse = true;
         }
         return _isparse;

@@ -15,7 +15,8 @@ public class ItemRow : MonoBehaviour
     }
     public void ChangePosition(Vector3 _vector3){
         // Vector3 tmp = this.transform.position;
-        this.transform.position += _vector3;
+        this.transform.localPosition += _vector3;
+
     }
 
 }

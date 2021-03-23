@@ -87,6 +87,10 @@ namespace DungeonExploration.Maze{
                 while (true)
                 {
                     count++;
+                    //カウンタがしきい値を超えた時、周りに繋げられる壁があったら繋げる
+                    if (count>threshold && ConnectPath(x,y)){
+                        count = 0;
+                    }
                     // 掘り進めることができる方向のリストを作成
                     var directions = new List<Direction>();
                     if (this.Maze[x, y - 1] == WALL && this.Maze[x, y - 2] == WALL)
@@ -97,10 +101,7 @@ namespace DungeonExploration.Maze{
                         directions.Add(Direction.Down);
                     if (this.Maze[x - 1, y] == WALL && this.Maze[x - 2, y] == WALL)
                         directions.Add(Direction.Left);
-                    //カウンタがしきい値を超えた時、周りに繋げられる壁があったら繋げる
-                    if (count>threshold && ConnectPath(x,y)){
-                        count = 0;
-                    }
+                    
                     // 掘り進められない場合、ループを抜ける
                     if (directions.Count == 0) break;
 

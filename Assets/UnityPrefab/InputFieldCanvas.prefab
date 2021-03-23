@@ -619,6 +619,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputField: {fileID: 1204846192171588863}
   inputtext: 
+  whatInput: {fileID: 290139205536697411}
 --- !u!1 &7325438451070592158
 GameObject:
   m_ObjectHideFlags: 0
