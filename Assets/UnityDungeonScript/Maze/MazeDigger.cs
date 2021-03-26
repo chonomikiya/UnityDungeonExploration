@@ -87,10 +87,7 @@ namespace DungeonExploration.Maze{
                 while (true)
                 {
                     count++;
-                    //カウンタがしきい値を超えた時、周りに繋げられる壁があったら繋げる
-                    if (count>threshold && ConnectPath(x,y)){
-                        count = 0;
-                    }
+
                     // 掘り進めることができる方向のリストを作成
                     var directions = new List<Direction>();
                     if (this.Maze[x, y - 1] == WALL && this.Maze[x, y - 2] == WALL)
@@ -105,13 +102,16 @@ namespace DungeonExploration.Maze{
                     // 掘り進められない場合、ループを抜ける
                     if (directions.Count == 0) break;
 
+                    //カウンタがしきい値を超えた時、周りに繋げられる壁があったら繋げる
+                    if (count>threshold && ConnectPath(x,y)){
+                        count = 0;
+                    }
                     // 指定座標を通路とし穴掘り候補座標から削除
                     SetPath(x, y);
                     // 掘り進められる場合はランダムに方向を決めて掘り進める
                     var dirIndex = rnd.Next(directions.Count);
                     // 決まった方向に先2マス分を通路とする
-                    switch (directions[dirIndex])
-                    {
+                    switch (directions[dirIndex]){
                         case Direction.Up:
                             SetPath(x, --y);
                             SetPath(x, --y);
@@ -141,17 +141,22 @@ namespace DungeonExploration.Maze{
                     Dig(cell.X, cell.Y);
                 }
             }
+
             bool ConnectPath(int _x,int _y){
                 bool connected = false;
                 List<Direction> mydirection = new List<Direction>();
-                if (this.Maze[_x, _y - 1] == WALL && this.Maze[_x, _y - 2] == PATH)
-                    mydirection.Add(Direction.Up);
-                if (this.Maze[_x + 1, _y] == WALL && this.Maze[_x + 2, _y] == PATH)
-                    mydirection.Add(Direction.Right);
-                if (this.Maze[_x, _y + 1] == WALL && this.Maze[_x, _y + 2] == PATH)
-                    mydirection.Add(Direction.Down);
-                if (this.Maze[_x - 1, _y] == WALL && this.Maze[_x - 2, _y] == PATH)
-                    mydirection.Add(Direction.Left);
+                if (this.Maze[_x, _y - 1] == WALL && this.Maze[_x, _y - 2] == PATH){
+                        mydirection.Add(Direction.Up);
+                    }
+                if (this.Maze[_x + 1, _y] == WALL && this.Maze[_x + 2, _y] == PATH){
+                        mydirection.Add(Direction.Right);
+                    }
+                if (this.Maze[_x, _y + 1] == WALL && this.Maze[_x, _y + 2] == PATH){
+                        mydirection.Add(Direction.Down);}
+
+                if (this.Maze[_x - 1, _y] == WALL && this.Maze[_x - 2, _y] == PATH){
+                        mydirection.Add(Direction.Left);
+                    }
                 if(mydirection.Count != 0){
                     int dirindex = myrnd.Next(mydirection.Count);
                     connected = true;

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class SeedDeliver
 {
@@ -11,6 +12,7 @@ public class SeedDeliver
         Seed = _src;
     }
     public int GetSeed(){
+        Debug.Log(Seed);
         return Seed;
     }
 }

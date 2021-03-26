@@ -190,13 +190,21 @@ public class MazeGenerator : MonoBehaviour
     public int GetMazeDirection(int [,] _maze ,int _z,int _x){
         int  mymap = 0;
         //up dir
-        if(_maze[(_z-1),_x] != WALL) mymap += 8;
+        if(_maze[(_z-1),_x] != WALL) return 8;
         //right dir 
-        if(_maze[_z,(_x+1)] != WALL) mymap += 4;
+        if(_maze[_z,(_x+1)] != WALL) return 4;
         //down dir
-        if(_maze[(_z+1),_x] != WALL) mymap += 2;
+        if(_maze[(_z+1),_x] != WALL) return 2;
         //left dir
-        if(_maze[_z,(_x-1)] != WALL) mymap += 1;
+        if(_maze[_z,(_x-1)] != WALL) return 1;
+        // //up dir
+        // if(_maze[(_z-1),_x] != WALL) mymap += 8;
+        // //right dir 
+        // if(_maze[_z,(_x+1)] != WALL) mymap += 4;
+        // //down dir
+        // if(_maze[(_z+1),_x] != WALL) mymap += 2;
+        // //left dir
+        // if(_maze[_z,(_x-1)] != WALL) mymap += 1;
         
         return mymap;
     }
