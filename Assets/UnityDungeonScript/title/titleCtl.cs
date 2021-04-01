@@ -21,11 +21,6 @@ public class titleCtl : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void SceneChange_Base(){
         SceneManager.LoadScene("base");
     }

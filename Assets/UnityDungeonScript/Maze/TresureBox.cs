@@ -17,12 +17,6 @@ public class TresureBox : MonoBehaviour
         tresure_animetor = this.GetComponent<Animator>();
         myuianime = GetComponent<UiAnime>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void Animation_OPEN(){
         SetItemName();
         tresure_animetor.Play("open");

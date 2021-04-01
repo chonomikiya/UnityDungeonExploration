@@ -41,21 +41,11 @@ namespace DungeonExploration.Maze{
             m_obtainedItem.AddItemList(GetTresureList());
         }
         //ItemとPrefixのId値を格納するの関数を呼び出す
-        public void ItemuIdSet(int _itemid,int _prefixid){
-            SetItemId(_itemid);
-            SetPrefixId(_prefixid);
-        }
         public void SetGameSoundReference(GameSoundManage _gamesoundmanage){
             this.gameSoundManage = _gamesoundmanage;
         }
         public void OpenSound_Play(){
             gameSoundManage.BoxOpen_Play();
-        }
-        public void SetItemId(int _itemId){
-            this.item_id = _itemId;
-        }
-        public void SetPrefixId(int _prefixId){
-            this.prefix_id = _prefixId;
         }
         public override void SetMapSprite(Sprite _sprite)
         {
@@ -72,8 +62,6 @@ namespace DungeonExploration.Maze{
         private void GetComponentIconSprite(){
             this.myicon = this.transform.GetChild(1).GetComponent<SpriteRenderer>();
         }
-        
-        
         public override void ChangeMapSprite(){
             //Tresureの部屋はQuaternionで向きを操作しているかつ入口が一つな為miniMapの画像は北で固定
             SetMapSprite(GetComponentMapUI().GetMapSprite(Map.S));

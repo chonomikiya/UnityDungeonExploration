@@ -8,25 +8,9 @@ public class MoneyUi : MonoBehaviour
 {
     int speed = 10;
     float interval = 2;
-    float elapsedTime = 0f;
     bool isUpdated = false;
     int totalmoney =0,addmoney=0,add=0,corrent = 0;
-    private void Update() {
-        // if(isUpdated){
-        //     corrent = corrent + (int)(add * Time.deltaTime);
-        //     if(corrent>totalmoney){
-        //         corrent = totalmoney;
-        //         isUpdated=false;
-        //         SetTotalMoneyUi(corrent);
-        //     }
-        // }
-    }
 
-    private void FixedUpdate() {
-        // if(isUpdated){
-        //     SetTotalMoneyUi(corrent);
-        // }  
-    }
     private IEnumerator MoneyUpdateAnimation(float start,float end,float duration){
         float startTime = Time.time;
         float endTime = startTime+duration;

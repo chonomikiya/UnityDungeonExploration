@@ -81,7 +81,6 @@ namespace DungeonExploration.Maze{
             private void Dig(int x, int y)
             {
                 // 指定座標から掘れなくなるまで堀り続ける
-                //default var rnd = new Random();
                 int count = 0;
                 var rnd = this.myrnd;
                 while (true)
@@ -141,7 +140,8 @@ namespace DungeonExploration.Maze{
                     Dig(cell.X, cell.Y);
                 }
             }
-
+            //周りの壁を調べて、問題が無ければ2つ先にある通路と繋げる
+            //繋いだらtrue、繋がらない時はfalse
             bool ConnectPath(int _x,int _y){
                 bool connected = false;
                 List<Direction> mydirection = new List<Direction>();
@@ -177,6 +177,7 @@ namespace DungeonExploration.Maze{
                 }
                 return connected;
             }
+            //行き止まりを確認、何処にも進むなかったらその箇所をTresure、Doorにする
             void GetDeadEndPath(int x,int y){
                 var directions = new List<Direction>();
                 if (this.Maze[x, y - 1] == WALL && this.Maze[x, y - 2] == WALL)

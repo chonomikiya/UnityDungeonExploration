@@ -75,18 +75,6 @@ public class ResultUi : MonoBehaviour
         DataTable dt = m_sqlitedatabase.ExecuteQuery("SELECT id,item,sell FROM user_possession");
         int count = 1;
         int total = 0;
-        // for(int i=0;i<4;i++){       
-        //  foreach(DataRow dr in dt.Rows){
-        //         GameObject AddRow = Instantiate(RowPrefab) as GameObject;
-        //         AddRow.name = "Row_"+count;
-        //         AddRow.transform.SetParent(RowTarget.transform,false);
-        //         AddRow.GetComponent<ItemRow>().ChangePosition(new Vector3(0,UI_SPACE*count,0));
-        //         AddRow.GetComponent<ItemRow>().SetItemText((string)dr["item"]);
-        //         AddRow.GetComponent<ItemRow>().SetPriceText(dr["sell"].ToString());
-        //         count++;
-        //         total += (int)dr["sell"];
-        //     }
-        // }
         //最後にTotalを表示
         GameObject totalGameobj = Instantiate(TotalPrefab) as GameObject;
         totalGameobj.name = "total";

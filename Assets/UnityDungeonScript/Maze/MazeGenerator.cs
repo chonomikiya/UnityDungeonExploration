@@ -1,9 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using DungeonExploration.Maze;
-using System;
 
     
 public class MazeGenerator : MonoBehaviour
@@ -15,7 +13,6 @@ public class MazeGenerator : MonoBehaviour
     int [,] Maze;
     [SerializeField] int init0ffset = 10;
     [SerializeField] GameObject myMapUI = null;
-
     [SerializeField] GameObject WallPrefab = null;
     [SerializeField] GameObject PathPrefab = null;
     [SerializeField] GameObject TresurePrefab = null;
@@ -40,30 +37,11 @@ public class MazeGenerator : MonoBehaviour
         MazeGenerate();
         gameSoundManage.PlayBgm(myRandomCtl.GetRandomLength(gameSoundManage.GetBgmLength()));
     }
-    // Update is called once per frame
-    void Update()
-    {
-        // if(Input.GetKeyDown(KeyCode.E)){
-        //     DeleteMaze();    
-        // }
-    }
     public void MazeGenerate(){
         myMazeDigger = new MazeDigger(Width,Height);
         myMazeDigger.InitMazeSeed(myRandomCtl.GetRandom());
         Maze = myMazeDigger.CreateMaze();
         instanceMaze(Maze);
-    }
-    //Debug用
-    void DeleteMaze(){
-        if( MazeGroup != null){
-            Destroy(MazeGroup.gameObject);
-        }else{
-            Debug.Log("cantDelete");
-        }
-    }
-    //InputField UI からstringを受け取るための関数
-    public void SetInputValue(string s){
-        myRandomCtl.SetSeed(s);
     }
     //intの配列からmazeを起こす
     public void instanceMaze(int [,] maze){
@@ -71,7 +49,6 @@ public class MazeGenerator : MonoBehaviour
         TresureManage.GetComponent<LookTableContents>().InitTableContentsCount();
         myWholeMapCamera.GetComponent<wholeMapCamera>().SetWholePos(new Vector3((Width*init0ffset)/2,0,-(Height*init0ffset)/2));
         MazeGroup = new GameObject("empty");
-        //自信がなかったためforeachを使わなかったので可読性が宜しくない,要改善
         for(int _z=0;_z<maze.GetLength(1);_z++){
             for(int _x=0;_x<maze.GetLength(0);_x++){
                 if(maze[_z,_x] == WALL){
@@ -130,28 +107,6 @@ public class MazeGenerator : MonoBehaviour
                 // arrayvalue += argmaze[x,y];
             }
         }
-    }
-    public Vector3 GetDirectionVector3(int _z,int _x){
-        Vector3 _vector3 = new Vector3(0,0,0);
-        int _dir = GetMazeDirection(Maze,_z,_x);
-        switch(_dir){
-            case 1:
-                _vector3 = new Vector3(0,90f,0);
-                break;
-            case 2:
-                _vector3 = new Vector3(0,0,0);
-                break;
-            case 4:
-                _vector3 = new Vector3(0,270f,0);
-                break;
-            case 8:
-                _vector3 = new Vector3(0,180f,0);
-                break;
-            default:
-                Debug.Log("Tresure Room Entrance Direction err");
-                break;
-        }
-        return _vector3;
     }
     public Quaternion GetTresureDirection(int _z,int _x){
         Quaternion _entrance = new Quaternion();

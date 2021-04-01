@@ -27,11 +27,6 @@ public class BaseUiCtl : MonoBehaviour
         OnViewMoneyUI();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void OnNextSceneButton(){
         Destroy(GameObject.FindWithTag("AudioObj"));
         if(isSeedInputFlg){

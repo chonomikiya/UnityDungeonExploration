@@ -16,12 +16,6 @@ public class GameSoundManage : MonoBehaviour
     {
         gamebgm = BGMObject.GetComponents<AudioSource>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void PlayBgm(int _index){
         playing = _index;
         gamebgm[_index].Play();

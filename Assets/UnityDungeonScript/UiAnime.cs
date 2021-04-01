@@ -9,26 +9,12 @@ public class UiAnime : MonoBehaviour
 {
     float offset = 0.5f;
     float animation_speed = 3f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void ObjAnimation_UP(GameObject target){
         Vector3 pos = target.transform.position;
         target.transform.DOMoveY(pos.y + offset,animation_speed);
     }
     public void TMPAnimation_Fade(TextMeshPro target){
         target.DOFade(0f,4f);
-    }
-    public void UiAnimation_UP(GameObject target){
-        // target.transform.DOMoveY(1f,1f);
     }
     public void UiAnimation_DOWN(GameObject target){
         Vector3 pos = target.transform.position;

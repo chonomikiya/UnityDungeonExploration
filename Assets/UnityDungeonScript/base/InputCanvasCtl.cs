@@ -39,54 +39,6 @@ public class InputCanvasCtl : MonoBehaviour
         }
         return _isparse;
     }
-    //すでにStringToIntはすでにC#でできるのでコメントアウト
-    // public int ParseStringToInt(string _text){
-        
-    //     int result;
-    //     bool isParsed = Int32.TryParse(_text, out result);
-    //     Debug.Log(result);
-    //     if(isParsed){
-    //         Debug.Log(result);
-    //     }else{
-    //         Debug.Log("parseErr");
-    //     }
-    //     // int _seed = 0;
-    //     // string islink = "";
-    //     // char [] char_parse = _text.ToCharArray();
-    //     // foreach (char valu in char_parse){
-    //     //     Debug.Log(valu);
-    //     //     islink = islink + valu;
-    //     // }
-    //     // Debug.Log(islink);
-
-    //     return result;
-    // }
-    // public bool ParseCheck(char  _target){
-    //     bool isjudge = false;
-    //     switch(_target){
-    //         case '0':
-    //             break;
-    //         case '1':
-    //             break;
-    //         case '2':
-    //             break;
-    //         case '3':
-    //             break;
-    //         case '4':
-    //             break;
-    //         case '5':
-    //             break;
-    //         case '6':
-    //             break;
-    //         case '7':
-    //             break;
-    //         case '8':
-    //             break;
-    //         case '9':
-    //             break;            
-    //     }
-    //     return isjudge;
-    // }
     public void OnExitSeedInputUi(){
         Destroy(this.transform.root.gameObject);
     }
